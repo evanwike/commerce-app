@@ -1,6 +1,8 @@
-# CommerceApp
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
+# CS-451R Semester Project (Group 1)
+## Project Documents
+* [Project Plan](docs/Project_Plan.pdf)
+* [Estimated Effort](docs/Estimated_Effort.xlsx)
+* [Iteration 1 Evaluation](docs/Iteration-1_Evaluation.pdf)
 
 ## Development server
 
