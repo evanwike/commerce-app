@@ -1,9 +1,14 @@
 # CS-451R Semester Project (Group 1)
 ## Project Documents
-* [Project Plan (PDF)](docs/Project_Plan.pdf)
-* [Estimated Effort (XLSX)](docs/Estimated_Effort.xlsx)
-* [Iteration 1 Evaluation (PDF)](docs/Iteration-1_Evaluation.pdf)
+### Iteration 1
+* [Project Charter](docs/Charter.pdf)
+* [Estimated Effort](docs/Iteration-1_Estimated_Effort.xlsx)
+* [Evaluation](docs/Iteration-1_Evaluation.pdf)
+### Iteration 2
+* [Project Plan](docs/Project_Plan.pdf)
 * [Risk Management Report (PDF)](docs/Risk_Management_Report.pdf)
+* [Estimated Effort](docs/Iteration-2_Estimated_Effort.xlsx)
+* [Evaluation](docs/Iteration-2_Evaluation.pdf)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
