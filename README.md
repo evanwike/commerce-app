@@ -6,7 +6,7 @@
 * [Evaluation](docs/Iteration-1_Evaluation.pdf)
 ### Iteration 2
 * [Project Plan](docs/Project_Plan.pdf)
-* [Risk Management Report (PDF)](docs/Risk_Management_Report.pdf)
+* [Risk Management Report](docs/Risk_Management_Report.pdf)
 * [Estimated Effort](docs/Iteration-2_Estimated_Effort.xlsx)
 * [Evaluation](docs/Iteration-2_Evaluation.pdf)
 ## Development server
