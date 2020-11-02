@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cs-451r-group-project": {
+      "hosting": {
+        "commerce-app": [
+          "cs-451r-group-project"
+        ]
+      }
+    }
+  }
+}
