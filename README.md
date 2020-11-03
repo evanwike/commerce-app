@@ -9,6 +9,9 @@
 * [Risk Management Report](docs/Risk_Management_Report.pdf)
 * [Estimated Effort](docs/Iteration-2_Estimated_Effort.xlsx)
 * [Evaluation](docs/Iteration-2_Evaluation.pdf)
+### Iteration 3
+* [Estimated Effort](docs/Iteration-3_Estimated_Effort.xlsx)
+* [Evaluation](docs/Iteration-3_Evaluation.pdf)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
