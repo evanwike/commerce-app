@@ -2,8 +2,43 @@ mat-card {
   width: 35%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10vh;
+}
+
+.header {
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 mat-form-field {
   width: 100%;
+
+  .mat-form-field-flex {
+    padding-top: 0;
+  }
+}
+
+// Removes padding under mat-form-field
+::ng-deep .mat-form-field-wrapper{
+  margin-bottom: -1em;
+}
+
+.actions {
+  button {
+    width: 100%;
+    margin-top: .5em;
+  }
+
+  .button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > button {
+      width: auto;
+      padding: 0;
+      margin: 0;
+    }
+  }
 }
