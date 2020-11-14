@@ -6,7 +6,7 @@ import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardComponent
   },
   {
