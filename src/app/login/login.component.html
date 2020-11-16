@@ -9,7 +9,8 @@
         <input matInput
                formControlName="email"
                required
-               email>
+               email
+               autocomplete="email">
         <button mat-icon-button
                 matSuffix
                 aria-label="Clear"
@@ -25,7 +26,8 @@
         <input matInput
                formControlName="password"
                [type]="hide ? 'password' : 'text'"
-               required>
+               required
+               autocomplete="current-password">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
@@ -39,7 +41,8 @@
         <button mat-button color="primary">Forgot?</button>
       </div>
       <button class="action" mat-flat-button color="primary">LOGIN</button>
-      <button class="action" mat-button color="primary">REGISTER</button>
+<!--      <a routerLink="/register" routerLinkActive="active">CREATE ACCOUNT</a>-->
+      <button class="action" mat-button color="primary">CREATE ACCOUNT</button>
     </div>
   </mat-card-content>
 </mat-card>
