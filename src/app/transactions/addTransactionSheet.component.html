@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CommerceApp</title>
+</head>
+<body>
+<mat-form-field appearance="fill">
+  <mat-label>Date</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>Description</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
+<br>
+<mat-form-field>
+  <mat-label>Amount</mat-label>
+  <input matInput type="number">
+  <span matPrefix>$&nbsp;</span>
+</mat-form-field>
+</body>
+</html>
