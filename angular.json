@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "commerce-app"
+  "defaultProject": "commerce-app",
+  "cli": {
+    "analytics": "953e00ca-d909-4a1c-b346-f6797460113c"
+  }
 }

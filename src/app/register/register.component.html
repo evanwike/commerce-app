@@ -1,21 +1,21 @@
+<body class="center">
 <mat-card>
   <div class="header">
-    Register
+    <h2>Register</h2>
   </div>
   <mat-card-content>
     <form [formGroup]="registrationForm">
-      <div class="grid">
-        <mat-form-field appearance="standard">
+        <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput
-                 formControlName="last"
+                 #email
+                 formControlName="email"
                  required
-                 email
                  autocomplete="email"
                  placeholder="doe.john@gmail.com">
         </mat-form-field>
 
-        <mat-form-field appearance="standard">
+        <mat-form-field appearance="outline">
           <mat-label>First Name</mat-label>
           <input matInput
                  formControlName="first"
@@ -25,7 +25,7 @@
                  placeholder="John">
         </mat-form-field>
 
-        <mat-form-field appearance="standard">
+        <mat-form-field appearance="outline">
           <mat-label>Last Name</mat-label>
           <input matInput
                  formControlName="last"
@@ -35,18 +35,19 @@
                  placeholder="Doe">
         </mat-form-field>
 
-        <mat-form-field appearance="standard" hintLabel="Min 8 characters">
+        <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput
                  #password
                  formControlName="password"
                  required
+                 minlength="8"
                  type="password"
                  autocomplete="new-password">
           <mat-hint align="end">{{password.value?.length || 0}}/8</mat-hint>
         </mat-form-field>
 
-        <mat-form-field appearance="standard" hintLabel="Min 8 characters">
+        <mat-form-field appearance="outline">
           <mat-label>Confirm Password</mat-label>
           <input matInput
                  #confirm
@@ -54,11 +55,15 @@
                  required
                  type="password"
                  autocomplete="new-password">
-          <mat-hint align="end">{{confirm.value?.length || 0}}/8</mat-hint>
         </mat-form-field>
-      </div>
 
+          <div>
+            <button class="btn" type="submit" mat-raised-button color="primary" (click)="authService.signUp(email.value, password.value)">SUBMIT</button>
+          </div>
 <!--      <mat-error *ngIf="registrationForm.controls.email.invalid"></mat-error>-->
     </form>
   </mat-card-content>
+  Already have an account? <a routerLink="/login" routerLinkActive="active"> Sign in </a>
+
 </mat-card>
+</body>
