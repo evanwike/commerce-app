@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {AddTransactionsComponent} from './transactions/Transactions.component';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { PiechartComponent } from './dashboard/piechart/piechart.component';
     NotificationsComponent,
     SpendingComponent,
     PiechartComponent
+    AddTransactionsComponent
   ],
   imports: [
     BrowserModule,
