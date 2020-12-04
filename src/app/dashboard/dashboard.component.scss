@@ -1,40 +1,43 @@
 #dashboard {
-  width: 100%;
-  height: 50%;
+  width: 90%;
+  height: 40%;
   border-radius: 25px;
   background-color: #f5f5f5;
+  margin: auto;
 }
 
 section {
   display: table;
 }
 
-.example-label {
+.label {
   display: table-cell;
   font-size: 10px;
   margin-left: 8px;
   min-width: 120px;
 }
 
-.example-button-row {
+.button-row {
   display: table-cell;
   width: 75%;
+
 }
 
-.example-button-row .mat-button-base {
+.button-row .mat-button-base {
   margin: 8px 8px 8px 0;
 }
 
-.example-flex-container {
+.flex-container {
   display: flex;
   justify-content: space-between;
-
+  margin-left: 70px;
 }
 
-.example-button-container {
+.button-container {
   display: flex;
   justify-content: center;
   width: 120px;
+
 }
 
 mat-grid-tile {
@@ -74,5 +77,22 @@ mat-card {
   border-radius: 10px;
   width: 50%;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+}
+
+#container {
   margin: auto;
+  width: 90%;
+
+}
+
+.welcome {
+  margin-left: 90px;
 }

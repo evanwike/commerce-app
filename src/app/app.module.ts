@@ -17,6 +17,8 @@ import { NotificationsComponent } from './dashboard/notifications/notifications.
 import { SpendingComponent } from './dashboard/spending/spending.component';
 import {ChartsModule} from 'ng2-charts';
 import { PiechartComponent } from './dashboard/piechart/piechart.component';
+import { TransactionComponent } from './dashboard/transaction/transaction.component';
+import { SetNotificationsComponent } from './dashboard/set-notifications/set-notifications.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { PiechartComponent } from './dashboard/piechart/piechart.component';
     RegisterComponent,
     NotificationsComponent,
     SpendingComponent,
-    PiechartComponent
+    PiechartComponent,
+    TransactionComponent,
+    SetNotificationsComponent
   ],
   imports: [
     BrowserModule,
