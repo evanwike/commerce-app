@@ -8,6 +8,13 @@ export interface Tile {
   Amount: string;
   Balance: string;
 }
+
+const DATA: Tile[] = [
+  {Date: '6/3/2020', Description: 'Starbucks', Amount: '$2.00', Balance: '$12,453.19'},
+  {Date: '6/5/2020', Description: 'Hoolihans', Amount: '$32.00', Balance: '$12,421.19'},
+  {Date: '6/7/2020', Description: 'Best Buy', Amount: '$50.00', Balance: '$12,371.19'},
+  {Date: '6/12/2020', Description: 'Deposit', Amount: '$86.00', Balance: '$12,457.19'},
+];
 @Component({
   selector: 'app-transactions',
   templateUrl: './Transactions.html',
@@ -15,15 +22,17 @@ export interface Tile {
 })
 
 export class AddTransactionsComponent implements OnInit{
-  constructor(private addTransactionSheet: MatBottomSheet) { }
+  displayedColumns: string[] = ['Date', 'Description', 'Amount', 'Balance'];
+  dataSource = DATA;
+  constructor() { }
   ngOnInit(): void {
   }
-  openTransactionSheet(): void{
-    this.addTransactionSheet.open(AddTransactionSheetComponent);
+  // openTransactionSheet(): void{
+    // this.addTransactionSheet.open(AddTransactionSheetComponent);
   }
-}
 
-@Component({
+
+/*@Component({
   selector: 'app-transactions-sheet',
   templateUrl: './addTransactionSheet.component.html'
 })
@@ -35,24 +44,28 @@ export class AddTransactionSheetComponent implements OnInit {
     this.addTransactionSheetRef.dismiss();
     event.preventDefault();
   }
-}
+}*/
 
-@Component({
+/*@Component({
   selector: 'app-transactions',
   templateUrl: './Transactions.html',
   styleUrls: ['./Transactions.component.scss']
 })
 
-export class ExportTransactionsComponent implements OnInit{
-  constructor(private exportTransactionSheet: MatBottomSheet) { }
+ export class ExportTransactionsComponent implements OnInit {
+  constructor(private exportTransactionSheet: MatBottomSheet) {
+  }
+
   ngOnInit(): void {
   }
-  openTransactionSheet(): void{
+
+  openTransactionSheet(): void {
     this.exportTransactionSheet.open(ExportTransactionSheetComponent);
   }
 }
+*/
 
-@Component({
+/*@Component({
   selector: 'app-transactions-sheet',
   templateUrl: './exportTransactionSheet.component.html'
 })
@@ -64,4 +77,4 @@ export class ExportTransactionSheetComponent implements OnInit {
     this.exportTransactionSheetRef.dismiss();
     event.preventDefault();
   }
-}
+}*/
