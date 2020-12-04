@@ -2,6 +2,9 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans');
+
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -12,8 +15,47 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$commerce-app-primary: mat-palette($mat-indigo);
-$commerce-app-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$commerce-app-palette: (
+  50: #e0f2ed,
+  100: #b2ded0,
+  200: #82cab2,
+  300: #51b495,
+  400: #2fa480,
+  500: #12946d,
+  600: #0f8762,
+  700: #097754,
+  800: #006747,
+  900: #004b2c,
+  A100: #4FA800,
+  A200: #007AA3,
+  A400: #FFB300,
+  A700: #E30000,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: white
+  )
+);
+
+$commerce-app-primary: mat-palette($commerce-app-palette, 800);
+$commerce-app-accent: mat-palette($commerce-app-palette, A100);
+$commerce-app-accent-green: mat-palette($commerce-app-palette, A100);
+$commerce-app-accent-blue: mat-palette($commerce-app-palette, A200);
+$commerce-app-accent-yellow: mat-palette($commerce-app-palette, A300);
+$commerce-app-accent-red: mat-palette($commerce-app-palette, A400);
+
 
 // The warn palette is optional (defaults to red).
 $commerce-app-warn: mat-palette($mat-red);
@@ -24,6 +66,10 @@ $commerce-app-theme: mat-light-theme((
   color: (
     primary: $commerce-app-primary,
     accent: $commerce-app-accent,
+    accent-green: $commerce-app-accent-green,
+    accent-blue:$commerce-app-accent-blue,
+    accent-yellow: $commerce-app-accent-yellow,
+    accent-red:$commerce-app-accent-red,
     warn: $commerce-app-warn,
   )
 ));
@@ -36,4 +82,4 @@ $commerce-app-theme: mat-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Open Sans', sans-serif; }
