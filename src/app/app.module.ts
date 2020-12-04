@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {AddTransactionsComponent} from './transactions/Transactions.component';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +21,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppComponent,
     DashboardComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddTransactionsComponent
   ],
   imports: [
     BrowserModule,
