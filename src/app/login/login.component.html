@@ -10,8 +10,7 @@
                #email
                formControlName="email"
                required
-               email
-               autocomplete="email">
+               email>
         <button mat-icon-button
                 matSuffix
                 aria-label="Clear"
@@ -28,8 +27,7 @@
                #password
                formControlName="password"
                [type]="hide ? 'password' : 'text'"
-               required
-               autocomplete="current-password">
+               required>
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
