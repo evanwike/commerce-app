@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import {AddTransactionsComponent} from './transactions/Transactions.component';
+import { AddTransactionsComponent } from './transactions/Transactions.component';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,8 @@ import { NotificationsComponent } from './dashboard/notifications/notifications.
 import { SpendingComponent } from './dashboard/spending/spending.component';
 import {ChartsModule} from 'ng2-charts';
 import { PiechartComponent } from './dashboard/piechart/piechart.component';
+import { TransactionComponent } from './dashboard/transaction/transaction.component';
+import { SetNotificationsComponent } from './dashboard/set-notifications/set-notifications.component';
 
 
 @NgModule({
@@ -29,8 +31,10 @@ import { PiechartComponent } from './dashboard/piechart/piechart.component';
     RegisterComponent,
     NotificationsComponent,
     SpendingComponent,
-    PiechartComponent
-    AddTransactionsComponent
+    PiechartComponent,
+    AddTransactionsComponent,
+    TransactionComponent,
+    SetNotificationsComponent
   ],
   imports: [
     BrowserModule,
