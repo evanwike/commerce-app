@@ -21,6 +21,8 @@ import {ChartsModule} from 'ng2-charts';
 import { PiechartComponent } from './dashboard/piechart/piechart.component';
 import { TransactionComponent } from './dashboard/transaction/transaction.component';
 import { SetNotificationsComponent } from './dashboard/set-notifications/set-notifications.component';
+import { ResetDialogComponent } from './login/reset-dialog/reset-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { SetNotificationsComponent } from './dashboard/set-notifications/set-not
     PiechartComponent,
     AddTransactionsComponent,
     TransactionComponent,
-    SetNotificationsComponent
+    SetNotificationsComponent,
+    ResetDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { SetNotificationsComponent } from './dashboard/set-notifications/set-not
     MaterialImportsModule,
     FireImportsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    MatDialogModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

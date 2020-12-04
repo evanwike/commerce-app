@@ -38,7 +38,7 @@
     <div class="actions">
       <div class="button-row">
         <mat-checkbox class="example-margin" color="primary">Remember me</mat-checkbox>
-        <button mat-button color="primary">Forgot?</button>
+        <button mat-button color="primary" (click)="openResetDialog()">Forgot?</button>
       </div>
       <button class="action" mat-flat-button color="primary" (click)="authService.login(email.value, password.value)">LOGIN</button>
 <!--      <a routerLink="/register" routerLinkActive="active">CREATE ACCOUNT</a>-->
