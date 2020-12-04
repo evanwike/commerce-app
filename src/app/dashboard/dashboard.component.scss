@@ -18,7 +18,7 @@ section {
 
 .example-button-row {
   display: table-cell;
-  width: 600px;
+  width: 75%;
 }
 
 .example-button-row .mat-button-base {
@@ -39,9 +39,40 @@ section {
 
 mat-grid-tile {
   background: none;
+  width: 100%;
 
 }
 
 mat-card {
   width: 35%;
+}
+
+#spending {
+  width: 100%;
+  height: 100%;
+}
+
+#notifications {
+  width: 100%;
+  height: 100%;
+}
+
+#transactions
+{
+  width: 100%;
+  height: 100%;
+}
+
+#piechart {
+  width: 100%;
+  height: 100%;
+}
+
+#account {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 50%;
+  height: auto;
+  margin: auto;
 }

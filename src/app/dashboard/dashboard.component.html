@@ -12,28 +12,83 @@
       <button mat-button color="accent" aria-label="Manage Transactions">
         <mat-icon>list</mat-icon> Transactions
       </button>
-      <button mat-button color="accent" aria-label="Example icon button with a open in new tab icon">
-        <mat-icon>settings</mat-icon> Account Settings
-      </button>
     </div>
   </div>
 
 </section>
 
 <div id="dashboard">
-  <mat-grid-list cols="3" rowHeight="3:1">
-    <mat-grid-tile colspan="1" rowspan="2">
-      Monthly spending module
+
+  <table width="100%" cellpadding="10">
+    <tr>
+      <td width="50%">
+        <div id="transactions">transactions</div>
+      </td>
+      <td colspan="2">
+        <div id="account">
+          <h2>Account Balance</h2>
+          $12,145.89
+        </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <!--NOTIFICATIONS HERE-->
+        <div id="notifications">
+          <app-notifications></app-notifications>
+        </div>
+      </td>
+
+      <td colspan="2">
+
+        <!-- PIE CHART HERE-->
+        <app-piechart></app-piechart>
+       <!-- BAR CHART HERE-->
+        <div id="spending">
+          <app-spending></app-spending>
+        </div>
+
+      </td>
+      <td>
+
+      </td>
+    </tr>
+  </table>
+
+<!--  <mat-grid-list cols="3" rowHeight="2:1">
+
+    <mat-grid-tile colspan="1" rowspan="1">
+
     </mat-grid-tile>
-    <mat-grid-tile colspan="2">
+
+    <mat-grid-tile colspan="1" rowspan="1">
+
+    </mat-grid-tile>
+
+
+    <mat-grid-tile colspan="1" rowspan="2">
       <mat-card>
       <mat-card-title>Account Balance</mat-card-title>
       <mat-card-subtitle>$12,145.89</mat-card-subtitle>
-      <mat-card-content>test</mat-card-content>
-    </mat-card></mat-grid-tile>
-    <mat-grid-tile>transactions</mat-grid-tile>
-    <mat-grid-tile>Notification Preview</mat-grid-tile>
-  </mat-grid-list>
+      <mat-card-content>  &lt;!&ndash;PIE CHART HERE&ndash;&gt;
+          <app-piechart></app-piechart>
+      </mat-card-content>
+    </mat-card>
 
+    </mat-grid-tile>
+
+
+    <mat-grid-tile colspan="1" rowspan="2">
+       &lt;!&ndash;BAR CHART HERE&ndash;&gt;
+
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="2">
+
+
+    </mat-grid-tile>
+
+  </mat-grid-list>-->
 
 </div>
