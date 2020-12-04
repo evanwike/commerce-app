@@ -15,9 +15,9 @@ export class AuthService {
   user$: Observable<firebase.User>;
 
   constructor(
-    private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
-    private router: Router) {
+    public afAuth: AngularFireAuth,
+    public afs: AngularFirestore,
+    public router: Router) {
       this.user$ = afAuth.authState;
   }
 
@@ -26,6 +26,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then(result => {
         console.log('Success!', result);
+        console.log(email, password);
       })
       .catch(err => {
         console.log(err.message);
@@ -37,9 +38,13 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!');
+        this.router.navigateByUrl('/dashboard');
       })
       .catch(err => {
-        console.log('Something went wrong:',err.message);
+        const message = err.message;
+        console.log('Something went wrong:', message);
+        window.alert(message);
+
       });
   }
 
