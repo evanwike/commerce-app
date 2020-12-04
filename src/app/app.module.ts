@@ -13,6 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialImportsModule } from './imports/material-imports.module';
 import { FireImportsModule } from './imports/fire-imports.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import { NotificationsComponent } from './dashboard/notifications/notifications.component';
+import { SpendingComponent } from './dashboard/spending/spending.component';
+import {ChartsModule} from 'ng2-charts';
+import { PiechartComponent } from './dashboard/piechart/piechart.component';
 
 
 @NgModule({
@@ -20,7 +24,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppComponent,
     DashboardComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotificationsComponent,
+    SpendingComponent,
+    PiechartComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     MaterialImportsModule,
     FireImportsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
