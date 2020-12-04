@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {ResetDialogComponent} from './reset-dialog/reset-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -36,13 +38,31 @@ export class LoginComponent implements OnInit {
     return this.validationMessages[control][errors.keys];
   }
 
-  // getErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
+  openResetDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    this.dialog.open(ResetDialogComponent, {
+      disableClose: true,
+      autoFocus: true,
+      width: '400px',
+      data: {
+        title: 'Reset Password',
+        email: this.loginForm.controls.email.value
+      }
+    })
+      .afterClosed()
+      .subscribe(data => {
+        console.log("Dialog output: ", data)
+        // TODO: Send password reset email w/ data
+        // TODO: Open dialog to show email has been sent
+      });
+
+
+  }
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
