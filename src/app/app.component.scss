@@ -1,9 +1,21 @@
+@import '~src/styles.scss';
+
 .example-spacer {
   flex: 1 1 auto;
 }
 
-.content-wrap {
-  padding: 5%;
+nav {
+  background: $primary;
+
+  ul li a {
+    width: auto;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
+
 
 mat-toolbar { width: 100%; }
