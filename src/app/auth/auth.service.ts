@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { User } from '../user.model';
+import { User } from './user.model';
 import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 
 @Injectable({
@@ -21,17 +22,27 @@ export class AuthService {
       this.user$ = afAuth.authState;
   }
 
-  signUp = (email: string, password: string) => {
+  signUpWithEmailAndPassword = (data: any) => {
     this.afAuth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(data.email, data.password)
       .then(result => {
-        console.log('Success!', result);
-        console.log(email, password);
+        console.log('Account created successfully.', result);
+        // Update profile
+        this.getUser()
+          .then(user => {
+            user.updateProfile({
+              displayName: `${data.firstName} ${data.lastName}`
+            }).then(res => {
+              console.log('Successfully updated new user profile.');
+            }).catch(err => {
+              console.log('Profile updated failure: ', err);
+            })
+        })
       })
       .catch(err => {
         console.log(err.message);
       });
-  }
+  };
 
   login = (email: string, password: string) => {
     this.afAuth
@@ -46,9 +57,24 @@ export class AuthService {
         window.alert(message);
 
       });
-  }
+  };
 
   logout = () => {
     this.afAuth.signOut();
+    this.router.navigateByUrl('/login');
+    // Send to dashboard
+  };
+
+  isLoggedIn() {
+    return this.afAuth.authState.pipe(first()).toPromise();
+  }
+
+  async getUser() {
+    const user = await this.isLoggedIn();
+    if (user) {
+      return user;
+    } else {
+      return null;
+    }
   }
 }

@@ -5,11 +5,11 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'dashboard'
-  },
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   redirectTo: 'dashboard'
+  // },
   {
     path: 'dashboard',
     component: DashboardComponent

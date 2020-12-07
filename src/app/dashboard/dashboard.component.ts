@@ -1,5 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../auth/auth.service';
+import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  user: firebase.User;
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.auth.user$.subscribe((user) => {
+      this.user = user;
+    })
   }
 
 }

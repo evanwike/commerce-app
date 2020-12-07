@@ -26,4 +26,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  register(data: any) {
+    this.authService.signUpWithEmailAndPassword(data);
+  }
 }

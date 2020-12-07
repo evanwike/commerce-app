@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ResetDialogComponent} from './reset-dialog/reset-dialog.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -62,10 +63,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
+  login(data: any) {
+    this.authService.login(data.email, data.password);
+  }
+
+  register() {
+    this.router.navigateByUrl('/register');
+  }
 }
