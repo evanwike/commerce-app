@@ -71,7 +71,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(data: any) {
-    this.authService.login(data.email, data.password);
+    this.authService.signInWithPassword(data.email, data.password)
+      .then(res => {
+        this.router.navigateByUrl('/dashboard');
+      })
+      .catch(err => {
+        console.log('Failed to redirect to dashboard after login.');
+      })
   }
 
   register() {

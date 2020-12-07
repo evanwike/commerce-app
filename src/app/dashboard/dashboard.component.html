@@ -1,6 +1,6 @@
 <div class="container">
   <div id="welcome">
-    <h2>Welcome back, {{user.displayName}}!</h2>
+    <h2>Welcome back, {{user.firstName}}.</h2>
   </div>
 
   <mat-card id="dashboard">
@@ -9,9 +9,11 @@
         <ng-template mat-tab-label>
           <mat-icon>account_balance</mat-icon><span class="d-none d-md-block">Dashboard</span>
         </ng-template>
-        <app-home-view>
-          <!-- Home View injected here -->
-        </app-home-view>
+        <div class="wrap">
+          <app-home-view>
+            <!-- Home View injected here -->
+          </app-home-view>
+        </div>
       </mat-tab>
 
       <mat-tab>

@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import {AuthService} from './auth/auth.service';
 import firebase from 'firebase/app';
 import {Router} from '@angular/router';
+import {User} from './auth/user.model';
 
 @Component({
   selector: 'app-root',
@@ -12,30 +13,25 @@ import {Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'commerce-app';
-  items: Observable<any[]>;
-  user: firebase.User;
+  @Input() loggedIn: boolean;
+  // TODO: FIXME, not picking up emit
 
-  constructor(firestore: AngularFirestore, private auth: AuthService, public router: Router) {
-    // FIXME: Remove this, just for testing
-    this.items = firestore.collection('items').valueChanges();
-  }
+  constructor(firestore: AngularFirestore, private authService: AuthService, public router: Router) { }
 
   logout() {
-    this.auth.logout();
+    this.authService.signOut();
+    this.loggedIn = false;
   }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe((user) => {
-      this.user = user;
-
-      if (user) {
-        console.log('User logged in.');
-        this.router.navigateByUrl('/dashboard');
-
-      } else {
-        console.log('User logged out.');
-        this.router.navigateByUrl('/login')
-      }
-    })
+    if (this.authService.userData$) {
+      console.log('User already signed in.');
+      this.router.navigateByUrl('/dashboard');
+      this.loggedIn = true;
+    } else {
+      console.log("User's authentication token expired, must login.");
+      this.router.navigateByUrl('/login');
+      this.loggedIn = false;
+    }
   }
 }
