@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import firebase from 'firebase/app';
 import {User} from '../auth/user.model';
+import {Router} from '@angular/router';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,16 +12,15 @@ import {User} from '../auth/user.model';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  user: User;
+  userData: any;
 
-  constructor(private authService: AuthService) {
-
-  }
-
-  ngOnInit(): void {
-    this.authService.userData$.subscribe(user => {
-      this.user = user;
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.userData$.pipe(take(1)).subscribe(user => {
+      this.userData = user;
+      this.authService.loggedIn = true;
     })
   }
+
+  ngOnInit(): void {}
 }
 

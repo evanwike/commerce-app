@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
@@ -25,6 +25,15 @@ export class LoginComponent implements OnInit {
       required: 'Please enter your password.'
     }
   };
+
+  constructor(
+    public authService: AuthService,
+    private dialog: MatDialog,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+  }
 
   getEmailErrorMessage() {
     if (this.loginForm.controls.email.hasError('Required')) {
@@ -57,27 +66,10 @@ export class LoginComponent implements OnInit {
         // TODO: Send password reset email w/ data
         // TODO: Open dialog to show email has been sent
       });
-
-
-  }
-
-  constructor(
-    public authService: AuthService,
-    private dialog: MatDialog,
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {
   }
 
   login(data: any) {
     this.authService.signInWithPassword(data.email, data.password)
-      .then(res => {
-        this.router.navigateByUrl('/dashboard');
-      })
-      .catch(err => {
-        console.log('Failed to redirect to dashboard after login.');
-      })
   }
 
   register() {
