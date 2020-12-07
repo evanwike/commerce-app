@@ -1,65 +1,52 @@
-<div id="container">
-
-  <div class="welcome"><h2>Welcome back, customer name</h2></div>
-<section>
-  <div class="button-row">
-    <div class="flex-container">
-
-
-      <button mat-button color="accent" aria-label="Return to dashboard">
-        <mat-icon>account_balance</mat-icon> Dashboard
-      </button>
-      <button mat-button color="accent" aria-label="Manage Notifications">
-        <mat-icon>notifications</mat-icon> Notifications
-      </button>
-      <button mat-button color="accent" aria-label="Manage Transactions">
-        <mat-icon>list</mat-icon> Transactions
-      </button>
-    </div>
+<div class="container">
+  <div id="welcome">
+    <h2>Welcome back, Customer!</h2>
   </div>
 
-</section>
+  <mat-card id="dashboard">
+    <mat-tab-group animationDuration="0ms" color="primary">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>account_balance</mat-icon><span class="d-none d-md-block">Dashboard</span>
+        </ng-template>
+        <app-home-view>
+          <!-- Home View injected here -->
+        </app-home-view>
+      </mat-tab>
 
-<div id="dashboard">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>list</mat-icon><span class="d-none d-md-block">Transactions</span>
+        </ng-template>
+        <app-transactions-view>
+          <!-- Transactions View injected here -->
+        </app-transactions-view>
+      </mat-tab>
 
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>notifications</mat-icon><span class="d-none d-md-block">Notifications</span>
+        </ng-template>
+        <app-notifications-view>
+          <!-- Notifications View injected here -->
+        </app-notifications-view>
+      </mat-tab>
+    </mat-tab-group>
 
-
-  <table width="100%" cellpadding="10">
-    <tr>
-      <td width="50%" valign="top">
-        <div id="transactions">
-          <app-transaction></app-transaction>
-        </div>
-      </td>
-      <td rowspan="2">
-        <div id="account">
-          <h2>Account Balance</h2>
-          $12,145.89
-        </div>
-
-
-        <app-piechart></app-piechart>
-
-
-        <div id="spending">
-          <app-spending></app-spending>
-        </div>
-      </td>
-
-    </tr>
-    <tr>
-      <td valign="top">
-
-        <div id="notifications">
-
-          <!--<app-set-notifications></app-set-notifications>-->
-          <app-notifications></app-notifications>
-        </div>
-      </td>
-
-    </tr>
-  </table>
-
-
-</div>
+<!--    <mat-toolbar color="primary" class="btn-group">-->
+<!--      <mat-toolbar-row>-->
+<!--        <div>-->
+<!--          <a mat-button routerLink="home">-->
+<!--            <mat-icon>account_balance</mat-icon>Dashboard-->
+<!--          </a>-->
+<!--          <a mat-button routerLink="transactions">-->
+<!--            <mat-icon>list</mat-icon>Transactions-->
+<!--          </a>-->
+<!--          <a mat-button routerLink="notifications">-->
+<!--            <mat-icon>notifications</mat-icon>Notifications-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </mat-toolbar-row>-->
+<!--    </mat-toolbar>-->
+  </mat-card>
 </div>

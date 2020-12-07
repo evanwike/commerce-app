@@ -23,6 +23,9 @@ import { TransactionComponent } from './dashboard/transaction/transaction.compon
 import { SetNotificationsComponent } from './dashboard/set-notifications/set-notifications.component';
 import { ResetDialogComponent } from './login/reset-dialog/reset-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { HomeViewComponent } from './dashboard/home-view/home-view.component';
+import { TransactionsViewComponent } from './dashboard/transactions-view/transactions-view.component';
+import { NotificationsViewComponent } from './dashboard/notifications-view/notifications-view.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     AddTransactionsComponent,
     TransactionComponent,
     SetNotificationsComponent,
-    ResetDialogComponent
+    ResetDialogComponent,
+    HomeViewComponent,
+    TransactionsViewComponent,
+    NotificationsViewComponent
   ],
   imports: [
     BrowserModule,

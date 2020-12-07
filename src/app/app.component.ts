@@ -15,4 +15,8 @@ export class AppComponent {
     // FIXME: Remove this, just for testing
     this.items = firestore.collection('items').valueChanges();
   }
+
+  logout() {
+    // TODO: Logout
+  }
 }

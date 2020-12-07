@@ -3,9 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import {AddTransactionsComponent} from './transactions/Transactions.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'dashboard'
+  },
   {
     path: 'dashboard',
     component: DashboardComponent
@@ -17,10 +21,6 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
-  },
-  {
-    path: 'transactions',
-    component: AddTransactionsComponent
   }
 ];
 
