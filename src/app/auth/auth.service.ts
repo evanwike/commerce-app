@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {switchMap, tap, startWith} from 'rxjs/operators';
 
 
@@ -12,28 +12,46 @@ import {switchMap, tap, startWith} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  // FIXME: Switch to User interface?
-  userData$: Observable<User>;
-  public loggedIn: boolean;
+  user$: Observable<User>;
+  auth: firebase.User = null;
+  authSub = new BehaviorSubject(this.auth);
+  currentAuthStatus = this.authSub.asObservable();
 
   constructor(public afAuth: AngularFireAuth,
               public afs: AngularFirestore,
               public router: Router) {
     // Get auth data, then get firestore user document || null
-    this.userData$ = this.afAuth.authState.pipe(
-      switchMap(user => {
-        if (user) {
-          this.signInUser();
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
-      }),
-      // Set/read the user data to local storage
-      // this avoids flickering on application startup
-      tap(user => localStorage.setItem('user', JSON.stringify(user))),
-      startWith(JSON.parse(localStorage.getItem('user')))
-    );
+    // this.userData$ = this.afAuth.authState.pipe(
+    //   switchMap(user => {
+    //     if (user) {
+    //       this.signInUser();
+    //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+    //     } else {
+    //       return of(null);
+    //     }
+    //   }),
+    //   // Set/read the user data to local storage
+    //   // this avoids flickering on application startup
+    //   tap(user => localStorage.setItem('user', JSON.stringify(user))),
+    //   startWith(JSON.parse(localStorage.getItem('user')))
+    // );
+    this.authListener();
+    // this.user$.pipe(
+    //   switchMap(user => user ? this.afs.collection('users').doc(this.auth.uid).valueChanges() : of(null)))
+  }
+
+  authListener() {
+    this.afAuth.onAuthStateChanged(cred => {
+      if (cred) {
+        this.authSub.next(cred);
+        console.log('User is logged in with credential: ', cred);
+
+      }
+      else {
+        this.authSub.next(null);
+        console.log('User is logged out.');
+      }
+    })
   }
 
   async signInWithPassword(email: string, password: string) {
@@ -49,8 +67,7 @@ export class AuthService {
   }
 
   signInUser() {
-    this.loggedIn = true;
-    this.router.navigateByUrl('/dashboard')
+
   }
 
   getUserData() {
@@ -84,7 +101,7 @@ export class AuthService {
 
   signOut() {
     this.afAuth.signOut().then(() => {
-      this.loggedIn = false;
+
       this.router.navigateByUrl('/login')
         .then(res => console.log('User successfully signed out.'))
         .catch(err => console.log('Error signing user out.', err));

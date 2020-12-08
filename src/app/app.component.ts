@@ -13,6 +13,8 @@ import {User} from './auth/user.model';
 })
 export class AppComponent implements OnInit {
   title = 'commerce-app';
+  auth: firebase.User;
+  // user: User;
 
   constructor(firestore: AngularFirestore, public authService: AuthService, public router: Router) { }
 
@@ -21,5 +23,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.currentAuthStatus.subscribe(status => this.auth = status);
+    // this.authService.user$.subscribe(user => this.user = user);
   }
 }
