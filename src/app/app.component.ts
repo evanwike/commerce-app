@@ -1,10 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from './auth/auth.service';
-import firebase from 'firebase/app';
-import {Router} from '@angular/router';
-import {User} from './auth/user.model';
+import {Observable} from 'rxjs';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +10,17 @@ import {User} from './auth/user.model';
 })
 export class AppComponent implements OnInit {
   title = 'commerce-app';
+  auth: Observable<firebase.User>;
 
-  constructor(firestore: AngularFirestore, public authService: AuthService, public router: Router) { }
+  constructor(private authService: AuthService) {
+    this.auth = new Observable();
+  }
 
   logout() {
     this.authService.signOut();
   }
 
   ngOnInit(): void {
+    this.auth = this.authService.auth$;
   }
 }
