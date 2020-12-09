@@ -26,7 +26,7 @@ export class AuthService {
       map(data => data.transactions));
   }
 
-  signInWithPassword(email: string, password: string) {
+  signInWithPassword(email: string, password: string): void {
     this.afAuth.signInWithEmailAndPassword(email, password)
       .then(() => {
         this.goToDashboard();
@@ -35,7 +35,7 @@ export class AuthService {
       .catch(console.log)
   }
 
-  async signUpWithEmailAndPassword(data) {
+  async signUpWithEmailAndPassword(data): Promise<any> {
     this.afAuth.createUserWithEmailAndPassword(data.email, data.password)
       .then(userRef => {
         this.goToDashboard();
@@ -53,11 +53,11 @@ export class AuthService {
       .catch(console.log);
   }
 
-  goToDashboard() {
+  goToDashboard(): void {
     this.router.navigateByUrl('/dashboard');
   }
 
-  signOut() {
+  signOut(): void {
     this.afAuth.signOut().then(() => {
 
       this.router.navigateByUrl('/login')
