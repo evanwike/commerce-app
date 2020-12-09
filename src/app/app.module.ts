@@ -13,7 +13,6 @@ import { TransactionsViewComponent } from './dashboard/transactions-view/transac
 import { NotificationsViewComponent } from './dashboard/notifications-view/notifications-view.component';
 import { TransactionComponent } from './dashboard/transaction/transaction.component';
 import { PiechartComponent } from './dashboard/piechart/piechart.component';
-import { SetNotificationsComponent } from './dashboard/set-notifications/set-notifications.component';
 import { ResetDialogComponent } from './login/reset-dialog/reset-dialog.component';
 import { NotificationsComponent } from './dashboard/notifications/notifications.component';
 import { SpendingComponent } from './dashboard/spending/spending.component';
@@ -28,26 +27,29 @@ import { ChartsModule } from 'ng2-charts';
 
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { AlertViewComponent } from './dashboard/alert-view/alert-view.component';
+import { SetNotificationsComponent } from './dashboard/set-notifications/set-notifications.component';
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    LoginComponent,
-    RegisterComponent,
-    NotificationsComponent,
-    SpendingComponent,
-    PiechartComponent,
-    AddTransactionsComponent,
-    TransactionComponent,
-    SetNotificationsComponent,
-    ResetDialogComponent,
-    HomeViewComponent,
-    TransactionsViewComponent,
-    NotificationsViewComponent
-  ],
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        LoginComponent,
+        RegisterComponent,
+        NotificationsComponent,
+        SpendingComponent,
+        PiechartComponent,
+        AddTransactionsComponent,
+        TransactionComponent,
+        ResetDialogComponent,
+        HomeViewComponent,
+        TransactionsViewComponent,
+        NotificationsViewComponent,
+        AlertViewComponent,
+        SetNotificationsComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
