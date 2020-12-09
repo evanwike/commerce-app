@@ -1,6 +1,6 @@
 <div class="container">
   <div id="welcome">
-    <h2>Welcome back, {{userData.firstName}}.</h2>
+    <h2>Welcome back, {{(authService.userProfile$ | async)?.firstName}}.</h2>
   </div>
 
   <mat-card id="dashboard">
