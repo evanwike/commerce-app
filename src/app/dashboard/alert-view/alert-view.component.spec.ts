@@ -10,7 +10,7 @@ describe('AlertViewComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ AlertViewComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

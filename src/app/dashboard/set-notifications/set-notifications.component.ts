@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-set-notifications',
@@ -8,7 +7,6 @@ import {FormGroup} from '@angular/forms';
 })
 export class SetNotificationsComponent {
 
-  example: FormGroup;
   oos: boolean;
   category: boolean;
   amount: boolean;

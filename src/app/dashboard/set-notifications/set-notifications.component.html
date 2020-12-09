@@ -3,7 +3,7 @@
 
   <div class="tcontainer">
     <mat-form-field appearance="fill" style="margin-right: 10px;">
-      <mat-label>Category</mat-label>
+      <mat-label>Type</mat-label>
       <mat-select (selectionChange)="onSelectionChange($event.value)">
         <mat-option value="oos">Out Of State</mat-option>
         <mat-option value="category">Category</mat-option>
@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <div *ngIf="oos" style="display:inline;">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="type">
         <mat-label>State</mat-label>
         <mat-select>
           <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
@@ -32,7 +32,7 @@
     </div>
 
     <div *ngIf="category" style="display: inline;">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="type">
         <mat-label>Category</mat-label>
         <mat-select>
           <mat-option>Groceries</mat-option>
@@ -53,7 +53,7 @@
     </div>
 
     <div *ngIf="amount" style="display: inline;">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="type">
         <mat-label>Amount</mat-label>
         <input matInput type="number" class="example-right-align">
         <span matPrefix>$&nbsp;</span>
