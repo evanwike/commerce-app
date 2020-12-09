@@ -5,7 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navItems">
-    <ul class="navbar-nav ml-auto" *ngIf="auth">
+    <ul class="navbar-nav ml-auto" *ngIf="auth | async">
       <li class="nav-item active">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>
@@ -13,10 +13,7 @@
   </div>
 </nav>
 
-<app-login *ngIf="!auth"></app-login>
-<app-dashboard *ngIf="auth"></app-dashboard>
-
-<!--<router-outlet>-->
-<!--    &lt;!&ndash; Components injected here &ndash;&gt;-->
-<!--</router-outlet>-->
+<router-outlet>
+    <!-- Components injected here -->
+</router-outlet>
 

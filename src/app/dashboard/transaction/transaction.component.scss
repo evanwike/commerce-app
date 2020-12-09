@@ -1,13 +1,18 @@
-.tcontainer {
-  margin-top: 10px;
+.transaction {
+  display: flex;
+  flex-flow: row nowrap;
 }
 
-.transactions {
-  margin-bottom: 5px;
-  margin-left: 50px;
-}
-
-.transactDate {
+//.tcontainer {
+//  margin-top: 10px;
+//}
+//
+//.transactions {
+//  margin-bottom: 5px;
+//  margin-left: 50px;
+//}
+//
+.date {
   background-color: #004b2c;
   width: 100px;
   font-family: 'Open Sans', sans-serif;
@@ -18,7 +23,7 @@
 
 }
 
-.transactText {
+.desc {
   width: 360px;
   background-color: #ffffff;
   padding: 10px;
@@ -26,7 +31,7 @@
 
 }
 
-.transactPrice {
+.amount {
   width: 100px;
   background-color: #ffffff;
   padding: 10px;
@@ -35,9 +40,7 @@
 }
 
 .icon {
-
   color: #ffffff;
-
 }
 
 h2 {
