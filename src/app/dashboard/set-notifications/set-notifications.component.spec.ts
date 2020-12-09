@@ -10,7 +10,7 @@ describe('SetNotificationsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ SetNotificationsComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

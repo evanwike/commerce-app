@@ -1,6 +1,80 @@
 <div class="scontainer">
-<h2>Manage Notifications</h2>
-  <button mat-button color="accent" aria-label="Add New Notification">Add Notification</button>
+  <h2>Add Notifications</h2>
+
+  <div class="tcontainer">
+    <mat-form-field appearance="fill" style="margin-right: 10px;">
+      <mat-label>Category</mat-label>
+      <mat-select (selectionChange)="onSelectionChange($event.value)">
+        <mat-option value="oos">Out Of State</mat-option>
+        <mat-option value="category">Category</mat-option>
+        <mat-option value="amount">Amount</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="oos" style="display:inline;">
+      <mat-form-field appearance="fill">
+        <mat-label>State</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="note" appearance="fill">
+        <mat-label>Note</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. Purchase made in Alaska...">
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+      <br>
+      <button mat-button color="accent">Submit</button>
+      <button mat-button color="accent">Cancel</button>
+      <br>
+    </div>
+
+    <div *ngIf="category" style="display: inline;">
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select>
+          <mat-option>Groceries</mat-option>
+          <mat-option>Utilities</mat-option>
+          <mat-option>Payroll</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="note" appearance="fill">
+        <mat-label>Note</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. Purchase made in Alaska...">
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+      <br>
+      <button mat-button color="accent">Submit</button>
+      <button mat-button color="accent">Cancel</button>
+      <br>
+    </div>
+
+    <div *ngIf="amount" style="display: inline;">
+      <mat-form-field appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" class="example-right-align">
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+
+      <mat-form-field class="note" appearance="fill">
+        <mat-label>Note</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. Purchase over $50 made...">
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+      <br>
+      <button mat-button color="accent">Submit</button>
+      <button mat-button color="accent">Cancel</button>
+      <br>
+    </div>
+
+
+  </div>
+
+  <h2>Manage Notifications</h2>
 
   <mat-accordion>
     <mat-expansion-panel hideToggle>
@@ -8,34 +82,14 @@
         <mat-panel-title>
           Shopping Category Notification
         </mat-panel-title>
-        <mat-panel-description>
-          Created on 07/13/2020
-        </mat-panel-description>
       </mat-expansion-panel-header>
-        <button mat-button color="accent" aria-label="Manage This Notification">Manage Notification</button>
-        <button mat-button color="accent" aria-label="Delete This Notification">Delete Notification</button>
+      <button mat-button color="accent" aria-label="Manage This Notification">Manage Notification</button>
+      <button mat-button color="accent" aria-label="Delete This Notification">Delete Notification</button>
 
       <div class="note"><b>Note:</b> Alert me when a transaction is made for electronics.</div>
 
 
     </mat-expansion-panel>
 
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Out-of-State Notification
-        </mat-panel-title>
-        <mat-panel-description>
-          Created on 05/25/2020
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <button mat-button color="accent" aria-label="Manage This Notification">Manage Notification</button>
-      <button mat-button color="accent" aria-label="Delete This Notification">Delete Notification</button>
-
-      <div class="note"><b>Note:</b> Alert me when a transaction is made out of state.</div>
-    </mat-expansion-panel>
-
   </mat-accordion>
-
-  <h2>Add Notification</h2>
 </div>
