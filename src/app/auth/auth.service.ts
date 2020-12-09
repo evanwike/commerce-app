@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import {BehaviorSubject, Observable, of} from 'rxjs';
-import {switchMap, tap, startWith} from 'rxjs/operators';
+import {switchMap, tap, startWith, map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -13,28 +13,19 @@ import {switchMap, tap, startWith} from 'rxjs/operators';
 })
 export class AuthService {
   user$: Observable<User>;
+
   auth: firebase.User = null;
   authSub = new BehaviorSubject(this.auth);
   currentAuthStatus = this.authSub.asObservable();
+  docRef: AngularFirestoreDocument<User>;
 
   constructor(public afAuth: AngularFireAuth,
               public afs: AngularFirestore,
               public router: Router) {
     // Get auth data, then get firestore user document || null
-    // this.userData$ = this.afAuth.authState.pipe(
-    //   switchMap(user => {
-    //     if (user) {
-    //       this.signInUser();
-    //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-    //     } else {
-    //       return of(null);
-    //     }
-    //   }),
-    //   // Set/read the user data to local storage
-    //   // this avoids flickering on application startup
-    //   tap(user => localStorage.setItem('user', JSON.stringify(user))),
-    //   startWith(JSON.parse(localStorage.getItem('user')))
-    // );
+    this.user$ = this.afAuth.authState.pipe(
+      switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(null))
+    );
     this.authListener();
     // this.user$.pipe(
     //   switchMap(user => user ? this.afs.collection('users').doc(this.auth.uid).valueChanges() : of(null)))
@@ -45,7 +36,6 @@ export class AuthService {
       if (cred) {
         this.authSub.next(cred);
         console.log('User is logged in with credential: ', cred);
-
       }
       else {
         this.authSub.next(null);
@@ -68,10 +58,6 @@ export class AuthService {
 
   signInUser() {
 
-  }
-
-  getUserData() {
-    return this.afs.collection('users').valueChanges({idField: 'uid'})
   }
 
   async signUpWithEmailAndPassword(data: any) {
