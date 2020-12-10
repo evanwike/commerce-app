@@ -1,1 +1,4 @@
-<p>notifications-view works!</p>
+<app-transaction *ngFor="let notification of (notifications$ | async)" [notification]="notification">
+
+</app-transaction>
+

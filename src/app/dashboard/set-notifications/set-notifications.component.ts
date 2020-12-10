@@ -39,6 +39,4 @@ export class SetNotificationsComponent {
       this.category = false;
     }
   }
-
-
 }
