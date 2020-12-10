@@ -2,12 +2,13 @@ import firebase from 'firebase';
 import Timestamp = firebase.firestore.Timestamp;
 
 export interface User {
+
   uid: string;
   email: string;
   firstName: string;
   lastName: string;
   transactions: Transaction[];
-  notifications: Notifications[];
+  notificationAmount: AmountNotification[];
 }
 
 export interface Transaction {
@@ -19,26 +20,8 @@ export interface Transaction {
   date: Timestamp;
 }
 
-export interface Notifications {
-  amountNotifications: AmountNotification[];
-  categoryNotifications: CategoryNotification[];
-  stateNotifications: StateNotification[];
-}
-
 export interface AmountNotification {
   amount: number;
   date: Timestamp;
   note: string;
-}
-
-export interface CategoryNotification {
-  category: string;
-  date: Timestamp;
-  note: string;
-}
-
-export interface StateNotification {
-  date: Timestamp;
-  note: string;
-  state: string;
 }

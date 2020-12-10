@@ -1,29 +1,9 @@
-<div class="ncontainer">
-  <h2>Notifications</h2>
-<div class="notifs">
-  <table>
-    <tr>
-      <td class="notifShopping"><mat-icon class="icon">priority_high</mat-icon></td>
-      <td class="textShopping">You have a notification for an <b>ELECTRONICS</b> transaction.</td>
-    </tr>
-  </table>
-</div>
 
-<div class="notifs">
-  <table>
-    <tr>
-      <td class="notifState"><mat-icon class="icon">priority_high</mat-icon></td>
-      <td class="textState">You have a notification for an <b>OUT-OF-STATE</b> transaction.</td>
-    </tr>
-  </table>
-</div>
-
-<div class="notifs">
-  <table>
-    <tr>
-      <td class="notifTime"><mat-icon class="icon">priority_high</mat-icon></td>
-      <td class="textTime">You have a notification for a <b>2 A.M.</b> transaction.</td>
-    </tr>
-  </table>
-</div>
-</div>
+  <div class="list-group-item flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h2 class="mb-1 ">
+        <span style="font-weight: bold">Amount:</span> ${{notificationAmount.amount}}</h2>
+    </div>
+    <p class="mb-1">{{notificationAmount.note}}</p>
+    <small>${{notificationAmount.amount}}</small>
+  </div>

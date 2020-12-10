@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {AuthService} from '../../auth/auth.service';
-import {Notifications} from '../../auth/user.model';
+import {AmountNotification} from '../../auth/user.model';
 
 @Component({
   selector: 'app-notifications-view',
@@ -9,14 +9,14 @@ import {Notifications} from '../../auth/user.model';
   styleUrls: ['./notifications-view.component.scss']
 })
 export class NotificationsViewComponent implements OnInit {
-  notifications$: Observable<Notifications>;
+  notificationAmount$: Observable<AmountNotification[]>;
 
   constructor(private authService: AuthService) {
-    this.notifications$ = new Observable();
+    this.notificationAmount$ = new Observable();
   }
 
   ngOnInit(): void {
-    this.notifications$ = this.authService.notifications$;
-    this.notifications$.subscribe(data => console.log(data));
+    this.notificationAmount$ = this.authService.notificationAmount;
+    this.notificationAmount$.subscribe(data => console.log(data));
   }
 }

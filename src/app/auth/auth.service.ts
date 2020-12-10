@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AmountNotification, CategoryNotification, Notifications, StateNotification, Transaction, User} from './user.model';
+import {AmountNotification, Transaction, User} from './user.model';
 import firebase from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -15,10 +15,7 @@ export class AuthService {
   readonly auth$: Observable<firebase.User>;
   readonly userProfile$: Observable<User>;
   readonly transactions$: Observable<Transaction[]>;
- /* readonly notifications$: Observable<Notifications>;
-  readonly amountNotifications$: Observable<AmountNotification[]>;
-  readonly categoryNotifications$: Observable<CategoryNotification[]>;
-  readonly stateNotifications$: Observable<StateNotification[]>*/
+  readonly notificationAmount: Observable<AmountNotification[]>;
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -27,10 +24,8 @@ export class AuthService {
     this.userProfile$ = this.afAuth.authState.pipe(
       switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(undefined)));
     this.transactions$ = this.userProfile$.pipe(map(user => user.transactions));
-   /* this.notifications$ = this.userProfile$.pipe(map(user => user.notifications));
-    this.amountNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.amountNotifications));
-    this.categoryNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.categoryNotifications));
-    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.stateNotifications));*/
+    this.notificationAmount = this.userProfile$.pipe(map(user => user.notificationAmount));
+
   }
 
   signInWithPassword(email: string, password: string): void {
@@ -54,6 +49,7 @@ export class AuthService {
           firstName: data.firstName,
           lastName: data.lastName,
           transactions: [],
+          notificationAmount: [],
           notifications: {
             amount: [],
             category: [],
