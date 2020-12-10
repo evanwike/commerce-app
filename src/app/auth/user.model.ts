@@ -6,7 +6,8 @@ export interface User {
   email: string;
   firstName: string;
   lastName: string;
-  transactions: Transaction[]
+  transactions: Transaction[];
+  notifications: Notifications;
 }
 
 export interface Transaction {
@@ -16,4 +17,28 @@ export interface Transaction {
   cr: string;
   description: string;
   date: Timestamp;
+}
+
+export interface Notifications {
+  amountNtfs: AmountNtf[];
+  categoryNtfs: CategoryNtf[];
+  stateNtfs: StateNtf[];
+}
+
+export interface AmountNtf {
+  amount: number;
+  date: Timestamp;
+  note: string;
+}
+
+export interface CategoryNtf {
+  category: string;
+  date: Timestamp;
+  note: string;
+}
+
+export interface StateNtf {
+  date: Timestamp;
+  note: string;
+  state: string;
 }

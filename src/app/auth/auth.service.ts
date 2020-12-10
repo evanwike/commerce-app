@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Transaction, User} from './user.model';
+import { Injectable } from '@angular/core';
+import {AmountNtf, CategoryNtf, Notifications, StateNtf, Transaction, User} from './user.model';
 import firebase from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -15,6 +15,10 @@ export class AuthService {
   readonly auth$: Observable<firebase.User>;
   readonly userProfile$: Observable<User>;
   readonly transactions$: Observable<Transaction[]>;
+  readonly notifications$: Observable<Notifications>;
+  readonly amountNotifications$: Observable<AmountNtf[]>;
+  readonly categoryNotifications$: Observable<CategoryNtf[]>;
+  readonly stateNotifications$: Observable<StateNtf[]>
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -22,8 +26,11 @@ export class AuthService {
     this.auth$ = afAuth.authState;
     this.userProfile$ = this.afAuth.authState.pipe(
       switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(undefined)));
-    this.transactions$ = this.userProfile$.pipe(
-      map(data => data.transactions));
+    this.transactions$ = this.userProfile$.pipe(map(user => user.transactions));
+    this.notifications$ = this.userProfile$.pipe(map(user => user.notifications));
+    this.amountNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.amountNtfs));
+    this.categoryNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.categoryNtfs));
+    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.stateNtfs));
   }
 
   signInWithPassword(email: string, password: string): void {
@@ -46,7 +53,12 @@ export class AuthService {
           email: data.email,
           firstName: data.firstName,
           lastName: data.lastName,
-          transactions: []
+          transactions: [],
+          notifications: {
+            amount: [],
+            category: [],
+            state: []
+          }
         }).then(refId => console.log('Successfully created new document for user: ', userRef.user?.uid))
           .catch(console.log);
       })
