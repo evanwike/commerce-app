@@ -7,7 +7,7 @@ export interface User {
   firstName: string;
   lastName: string;
   transactions: Transaction[];
-  notifications: Notifications;
+  notifications: Notifications[];
 }
 
 export interface Transaction {

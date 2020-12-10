@@ -58,7 +58,7 @@ import { SetNotificationsComponent } from './dashboard/set-notifications/set-not
     FireImportsModule,
     ReactiveFormsModule,
     ChartsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

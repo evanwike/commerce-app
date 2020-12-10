@@ -15,10 +15,10 @@ export class AuthService {
   readonly auth$: Observable<firebase.User>;
   readonly userProfile$: Observable<User>;
   readonly transactions$: Observable<Transaction[]>;
-  readonly notifications$: Observable<Notifications>;
+ /* readonly notifications$: Observable<Notifications>;
   readonly amountNotifications$: Observable<AmountNotification[]>;
   readonly categoryNotifications$: Observable<CategoryNotification[]>;
-  readonly stateNotifications$: Observable<StateNotification[]>
+  readonly stateNotifications$: Observable<StateNotification[]>*/
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -27,10 +27,10 @@ export class AuthService {
     this.userProfile$ = this.afAuth.authState.pipe(
       switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(undefined)));
     this.transactions$ = this.userProfile$.pipe(map(user => user.transactions));
-    this.notifications$ = this.userProfile$.pipe(map(user => user.notifications));
+   /* this.notifications$ = this.userProfile$.pipe(map(user => user.notifications));
     this.amountNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.amountNotifications));
     this.categoryNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.categoryNotifications));
-    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.stateNotifications));
+    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.stateNotifications));*/
   }
 
   signInWithPassword(email: string, password: string): void {
@@ -39,7 +39,7 @@ export class AuthService {
         this.goToDashboard();
         console.log('User signed in with email and password.');
       })
-      .catch(console.log)
+      .catch(console.log);
   }
 
   async signUpWithEmailAndPassword(data): Promise<any> {
