@@ -20,24 +20,24 @@ export interface Transaction {
 }
 
 export interface Notifications {
-  amountNtfs: AmountNtf[];
-  categoryNtfs: CategoryNtf[];
-  stateNtfs: StateNtf[];
+  amountNotifications: AmountNotification[];
+  categoryNotifications: CategoryNotification[];
+  stateNotifications: StateNotification[];
 }
 
-export interface AmountNtf {
+export interface AmountNotification {
   amount: number;
   date: Timestamp;
   note: string;
 }
 
-export interface CategoryNtf {
+export interface CategoryNotification {
   category: string;
   date: Timestamp;
   note: string;
 }
 
-export interface StateNtf {
+export interface StateNotification {
   date: Timestamp;
   note: string;
   state: string;

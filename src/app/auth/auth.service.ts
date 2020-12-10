@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AmountNtf, CategoryNtf, Notifications, StateNtf, Transaction, User} from './user.model';
+import {AmountNotification, CategoryNotification, Notifications, StateNotification, Transaction, User} from './user.model';
 import firebase from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -16,9 +16,9 @@ export class AuthService {
   readonly userProfile$: Observable<User>;
   readonly transactions$: Observable<Transaction[]>;
   readonly notifications$: Observable<Notifications>;
-  readonly amountNotifications$: Observable<AmountNtf[]>;
-  readonly categoryNotifications$: Observable<CategoryNtf[]>;
-  readonly stateNotifications$: Observable<StateNtf[]>
+  readonly amountNotifications$: Observable<AmountNotification[]>;
+  readonly categoryNotifications$: Observable<CategoryNotification[]>;
+  readonly stateNotifications$: Observable<StateNotification[]>
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -28,9 +28,9 @@ export class AuthService {
       switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(undefined)));
     this.transactions$ = this.userProfile$.pipe(map(user => user.transactions));
     this.notifications$ = this.userProfile$.pipe(map(user => user.notifications));
-    this.amountNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.amountNtfs));
-    this.categoryNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.categoryNtfs));
-    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.stateNtfs));
+    this.amountNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.amountNotifications));
+    this.categoryNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.categoryNotifications));
+    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.stateNotifications));
   }
 
   signInWithPassword(email: string, password: string): void {
