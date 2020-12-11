@@ -14,12 +14,6 @@
 
     <div *ngIf="oos" style="display:inline;">
 
-        <mat-form-field class="date" appearance="fill">
-          <mat-label>Date</mat-label>
-          <input type="date" matInput>
-          <mat-icon matSuffix>calendar_today</mat-icon>
-        </mat-form-field>
-
       <mat-form-field class="date" appearance="fill">
         <mat-label>Date</mat-label>
         <input type="date" matInput>
@@ -44,12 +38,6 @@
     </div>
 
     <div *ngIf="category" style="display: inline;">
-
-      <mat-form-field class="date" appearance="fill">
-        <mat-label>Date</mat-label>
-        <input type="date" matInput>
-        <mat-icon matSuffix>calendar_today</mat-icon>
-      </mat-form-field>
 
 
       <mat-form-field class="date" appearance="fill">
@@ -79,13 +67,6 @@
 
     <div *ngIf="amount" style="display: inline;">
 
-
-      <mat-form-field class="date" appearance="fill">
-        <mat-label>Date</mat-label>
-        <input type="date" matInput>
-        <mat-icon matSuffix>calendar_today</mat-icon>
-      </mat-form-field>
-
       <mat-form-field class="date" appearance="fill">
         <mat-label>Date</mat-label>
         <input type="date" matInput>
@@ -106,13 +87,8 @@
       <br>
       <button mat-button color="accent">Submit</button>
     </div>
-
-
+    
   </div>
-
-  <h2>Manage Notifications</h2>
-
-  <app-notifications-view></app-notifications-view>
 
 <!--
   <mat-accordion>
