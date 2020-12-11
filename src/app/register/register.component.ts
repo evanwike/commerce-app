@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
       Validators.pattern(/[A-Z]/), Validators.pattern(/[a-z]/),
       Validators.pattern(/[`~!@#$%^&*()_+={}|:";'<>?,./\-\[\]\\]/)]),
     confirmPassword: new FormControl('', [Validators.required])
-  }, {matchPassword});
+  });
 
   constructor(
     public authService: AuthService) { }
