@@ -18,14 +18,11 @@ export class ResetDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // Close dialog, send email as result
   save() {
     this.dialogRef.close(this.email);
   }
 
-  // Close Dialog
   close() {
     this.dialogRef.close();
   }
-
 }

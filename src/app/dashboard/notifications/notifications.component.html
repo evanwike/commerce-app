@@ -1,29 +1,38 @@
-<div class="ncontainer">
-  <h2>Notifications</h2>
-<div class="notifs">
-  <table>
-    <tr>
-      <td class="notifShopping"><mat-icon class="icon">priority_high</mat-icon></td>
-      <td class="textShopping">You have a notification for an <b>ELECTRONICS</b> transaction.</td>
-    </tr>
-  </table>
-</div>
+<h2>Notification Overview</h2>
 
-<div class="notifs">
-  <table>
-    <tr>
-      <td class="notifState"><mat-icon class="icon">priority_high</mat-icon></td>
-      <td class="textState">You have a notification for an <b>OUT-OF-STATE</b> transaction.</td>
-    </tr>
-  </table>
-</div>
+    <div class="timespan">
+      <!-- Warning notification -->
+      <div class="alert alert-warning alert-dismissible p-2 rounded" role="alert">
+        <svg width="2em" height="1em" viewBox="0 0 17 16" class="bi bi-exclamation-triangle-fill" fill="currentColor"
+             xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg>
+       <span class="alertText"> <strong>Out of state purchases</strong> triggered <strong> 1 </strong> time(s) over the last month.</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
-<div class="notifs">
-  <table>
-    <tr>
-      <td class="notifTime"><mat-icon class="icon">priority_high</mat-icon></td>
-      <td class="textTime">You have a notification for a <b>2 A.M.</b> transaction.</td>
-    </tr>
-  </table>
-</div>
-</div>
+      <!-- Info notification -->
+      <div class="alert alert-info alert-dismissible p-2 rounded" role="alert">
+        <svg width="2em" height="1em" viewBox="0 0 16 16" class="bi bi-info-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+        </svg>
+        <span class="alertText"><strong>Purchases over $100</strong> triggered <strong> 3 </strong> time(s) over the last month.</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- Success notification -->
+      <div class="alert alert-success alert-dismissible p-2 rounded" role="alert">
+        <svg width="2em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </svg>
+        <span class="alertText"><strong>Electronics purchase</strong> triggered <strong> 2 </strong> time(s) over the last month.</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>

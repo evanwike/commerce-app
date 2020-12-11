@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-set-notifications',
   templateUrl: './set-notifications.component.html',

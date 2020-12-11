@@ -7,14 +7,13 @@
 #dashboard {
   & button {
     padding-left: 0;
+
   }
 }
 
 .wrap {
   padding: 10px;
 }
-
-
 
 ::ng-deep mat-tab-body {
   overflow: visible !important;

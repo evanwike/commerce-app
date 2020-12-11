@@ -13,6 +13,13 @@
     </mat-form-field>
 
     <div *ngIf="oos" style="display:inline;">
+
+      <mat-form-field class="date" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput>
+      </mat-form-field>
+
+
       <mat-form-field appearance="fill" class="type">
         <mat-label>State</mat-label>
         <mat-select>
@@ -25,11 +32,20 @@
         <input matInput #message maxlength="256" placeholder="Ex. Purchase made in Alaska...">
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
       </mat-form-field>
+
       <br>
       <button mat-button color="accent">Submit</button>
     </div>
 
     <div *ngIf="category" style="display: inline;">
+
+
+      <mat-form-field class="date" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput>
+      </mat-form-field>
+
+
       <mat-form-field appearance="fill" class="type">
         <mat-label>Category</mat-label>
         <mat-select>
@@ -44,11 +60,18 @@
         <input matInput #message maxlength="256" placeholder="Ex. Purchase made in Alaska...">
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
       </mat-form-field>
+
       <br>
       <button mat-button color="accent">Submit</button>
     </div>
 
     <div *ngIf="amount" style="display: inline;">
+
+      <mat-form-field class="date" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="date" matInput>
+      </mat-form-field>
+
       <mat-form-field appearance="fill" class="type">
         <mat-label>Amount</mat-label>
         <input matInput type="number" class="example-right-align">
@@ -64,12 +87,10 @@
       <br>
       <button mat-button color="accent">Submit</button>
     </div>
-
-
+    
   </div>
 
-  <h2>Manage Notifications</h2>
-
+<!--
   <mat-accordion>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
@@ -85,5 +106,7 @@
 
     </mat-expansion-panel>
 
-  </mat-accordion>
+  </mat-accordion>-->
+
+
 </div>
