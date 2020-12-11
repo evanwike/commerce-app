@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Transaction} from '../../auth/user.model';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-transaction',
@@ -7,13 +6,10 @@ import {Transaction} from '../../auth/user.model';
   styleUrls: ['./transaction.component.scss']
 })
 export class TransactionComponent implements OnInit {
-  @Input() transaction: Transaction;
 
   constructor() { }
 
-  ngOnInit(): void { }
-
-  getDate() {
-    return this.transaction.date.toDate().toDateString();
+  ngOnInit(): void {
   }
+
 }

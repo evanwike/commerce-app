@@ -5,13 +5,18 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navItems">
-    <ul class="navbar-nav ml-auto" *ngIf="auth | async">
+    <ul class="navbar-nav ml-auto" *ngIf="authService.loggedIn">
       <li class="nav-item active">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
+
+<!--<mat-toolbar color="primary">-->
+<!--  <span><img src="https://i.imgur.com/a1nfsVx.png"></span>-->
+<!--  <span class="example-spacer"></span>-->
+<!--</mat-toolbar>-->
 
 <router-outlet>
     <!-- Components injected here -->

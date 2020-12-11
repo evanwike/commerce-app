@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import {AuthService} from './auth/auth.service';
-import {Observable} from 'rxjs';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import {Router} from '@angular/router';
+import {User} from './auth/user.model';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +13,13 @@ import firebase from 'firebase';
 })
 export class AppComponent implements OnInit {
   title = 'commerce-app';
-  auth: Observable<firebase.User>;
-  // FIXME: Add logic to log user into dashboard upon entry when already authenticated.
-  //  Right now, it will just sit on a blank page, logged in.
-  constructor(private authService: AuthService) {
-    this.auth = new Observable();
-  }
 
-  logout(): void {
+  constructor(firestore: AngularFirestore, public authService: AuthService, public router: Router) { }
+
+  logout() {
     this.authService.signOut();
   }
 
   ngOnInit(): void {
-    this.auth = this.authService.auth$;
   }
 }
