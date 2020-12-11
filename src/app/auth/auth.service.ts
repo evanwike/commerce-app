@@ -41,7 +41,7 @@ export class AuthService {
       } else {
         this.signOut();
       }
-    });
+    })
   }
 
   signInWithPassword(email: string, password: string): void {
@@ -93,6 +93,6 @@ export class AuthService {
     // @ts-ignore
     this.userDocRef.update({
       transactions: firebase.firestore.FieldValue.arrayUnion(data) as unknown as Transaction[]
-    });
+    })
   }
 }
