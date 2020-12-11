@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Add Transaction</h2>
+<mat-divider></mat-divider>
+<div>
+  <form [formGroup]="form" (ngSubmit)="save(form.value)">
+    <mat-form-field appearance="standard">
+      <mat-label>Account Number</mat-label>
+      <input matInput required formControlName="accountNum">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Amount</mat-label>
+      <input matInput required formControlName="amount">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Description</mat-label>
+      <input matInput required formControlName="description">
+    </mat-form-field>
+
+    <mat-button-toggle-group formControlName="cr">
+      <mat-button-toggle value="DR">Debit</mat-button-toggle>
+      <mat-button-toggle value="CR">Credit</mat-button-toggle>
+    </mat-button-toggle-group>
+  </form>
+</div>
+
+<div class="button-row">
+  <button class="mat-raised-button"(click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="save(form.value)">Add</button>
+</div>
+
