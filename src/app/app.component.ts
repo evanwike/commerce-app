@@ -11,8 +11,7 @@ import firebase from 'firebase';
 export class AppComponent implements OnInit {
   title = 'commerce-app';
   auth: Observable<firebase.User>;
-  // FIXME: Add logic to log user into dashboard upon entry when already authenticated.
-  //  Right now, it will just sit on a blank page, logged in.
+
   constructor(private authService: AuthService) {
     this.auth = new Observable();
   }

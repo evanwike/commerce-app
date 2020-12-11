@@ -7,7 +7,6 @@ import {MatDialogRef} from '@angular/material/dialog';
   templateUrl: './add-transaction-dialog.component.html',
   styleUrls: ['./add-transaction-dialog.component.scss']
 })
-
 export class AddTransactionDialogComponent implements OnInit {
   form = new FormGroup({
     accountNum: new FormControl('', [Validators.required]),
