@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
-import {matchPassword} from '../password-validator.directive';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +9,7 @@ import {matchPassword} from '../password-validator.directive';
 })
 
 export class RegisterComponent implements OnInit {
+  hide = true;
   registrationForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
@@ -17,8 +17,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [Validators.required,
       Validators.minLength(8), Validators.pattern(/\d/),
       Validators.pattern(/[A-Z]/), Validators.pattern(/[a-z]/),
-      Validators.pattern(/[`~!@#$%^&*()_+={}|:";'<>?,./\-\[\]\\]/)]),
-    confirmPassword: new FormControl('', [Validators.required])
+      Validators.pattern(/[`~!@#$%^&*()_+={}|:";'<>?,./\-\[\]\\]/)])
   });
 
   constructor(
