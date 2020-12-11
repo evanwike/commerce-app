@@ -20,9 +20,9 @@ export interface Transaction {
 }
 
 export interface Notifications {
-  amountNotifications: AmountNotification[];
-  categoryNotifications: CategoryNotification[];
-  stateNotifications: StateNotification[];
+  amount: AmountNotification[];
+  category: CategoryNotification[];
+  state: StateNotification[];
 }
 
 export interface AmountNotification {

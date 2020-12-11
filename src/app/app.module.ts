@@ -29,6 +29,9 @@ import { ChartsModule } from 'ng2-charts';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AlertViewComponent } from './dashboard/alert-view/alert-view.component';
 import { SetNotificationsComponent } from './dashboard/set-notifications/set-notifications.component';
+import { AmountNotificationComponent } from './dashboard/notifications/amount-notification/amount-notification.component';
+import { CategoryNotificationComponent } from './dashboard/notifications/category-notification/category-notification.component';
+import { StateNotificationComponent } from './dashboard/notifications/state-notification/state-notification.component';
 
 
 
@@ -49,6 +52,9 @@ import { SetNotificationsComponent } from './dashboard/set-notifications/set-not
         NotificationsViewComponent,
         AlertViewComponent,
         SetNotificationsComponent,
+        AmountNotificationComponent,
+        CategoryNotificationComponent,
+        StateNotificationComponent,
     ],
   imports: [
     BrowserModule,

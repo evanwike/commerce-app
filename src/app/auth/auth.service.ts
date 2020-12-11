@@ -28,9 +28,12 @@ export class AuthService {
       switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(undefined)));
     this.transactions$ = this.userProfile$.pipe(map(user => user.transactions));
     this.notifications$ = this.userProfile$.pipe(map(user => user.notifications));
-    this.amountNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.amountNotifications));
-    this.categoryNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.categoryNotifications));
-    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.stateNotifications));
+
+    this.notifications$.subscribe(data => console.log(data))
+
+    this.amountNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.amount));
+    this.categoryNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.category));
+    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.state));
   }
 
   signInWithPassword(email: string, password: string): void {

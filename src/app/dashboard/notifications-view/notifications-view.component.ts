@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {AuthService} from '../../auth/auth.service';
-import {AmountNotification, CategoryNotification, Notifications, StateNotification} from '../../auth/user.model';
+import {AmountNotification, CategoryNotification, StateNotification} from '../../auth/user.model';
 
 @Component({
   selector: 'app-notifications-view',
@@ -23,5 +23,7 @@ export class NotificationsViewComponent implements OnInit {
     this.amountNotifications$ = this.authService.amountNotifications$;
     this.categoryNotifications$ = this.authService.categoryNotifications$;
     this.stateNotifications$ = this.authService.stateNotifications$;
+
+    this.amountNotifications$.subscribe(data => console.log(data))
   }
 }
