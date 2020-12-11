@@ -48,6 +48,10 @@
         </button>
         <mat-hint align="end">{{password.value?.length || 0}}/8</mat-hint>
       </mat-form-field>
+      <div *ngIf="registrationForm.get('password').touched && !registrationForm.valid">
+        <p class="check">Must contain at least 1 of each:</p>
+        <p class="check">Lowercase letter, uppercare letter, number, special character</p>
+      </div>
 
       <div>
         <button class="btn" type="submit" [disabled]="!registrationForm.valid" mat-raised-button color="primary">SUBMIT</button>
