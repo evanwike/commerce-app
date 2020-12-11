@@ -11,7 +11,7 @@ import {AmountNotification, CategoryNotification, StateNotification} from '../..
 export class NotificationsViewComponent implements OnInit {
   amountNotifications$: Observable<AmountNotification[]>;
   categoryNotifications$: Observable<CategoryNotification[]>;
-  stateNotifications$: Observable<StateNotification[]>
+  stateNotifications$: Observable<StateNotification[]>;
 
   constructor(private authService: AuthService) {
     this.amountNotifications$ = new Observable();

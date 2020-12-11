@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {AmountNotification, CategoryNotification, Notifications, StateNotification, Transaction, User} from './user.model';
 import firebase from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {switchMap, map} from 'rxjs/operators';
@@ -18,7 +18,8 @@ export class AuthService {
   readonly notifications$: Observable<Notifications>;
   readonly amountNotifications$: Observable<AmountNotification[]>;
   readonly categoryNotifications$: Observable<CategoryNotification[]>;
-  readonly stateNotifications$: Observable<StateNotification[]>
+  readonly stateNotifications$: Observable<StateNotification[]>;
+  userDocRef: AngularFirestoreDocument<User>;
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -28,12 +29,19 @@ export class AuthService {
       switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(undefined)));
     this.transactions$ = this.userProfile$.pipe(map(user => user.transactions));
     this.notifications$ = this.userProfile$.pipe(map(user => user.notifications));
+    this.amountNotifications$ = this.notifications$.pipe(map(notificationObj => notificationObj.amount));
+    this.categoryNotifications$ = this.notifications$.pipe(map(notificationObj => notificationObj.category));
+    this.stateNotifications$ = this.notifications$.pipe(map(notificationObj => notificationObj.state));
 
-    this.notifications$.subscribe(data => console.log(data))
-
-    this.amountNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.amount));
-    this.categoryNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.category));
-    this.stateNotifications$ = this.notifications$.pipe(map(ntfs => ntfs.state));
+    // Sign user into their dashboard if already authenticated
+    this.afAuth.onAuthStateChanged(user => {
+      if (user) {
+        this.goToDashboard();
+        this.userDocRef = this.afs.collection('users').doc(user.uid);
+      } else {
+        this.signOut();
+      }
+    })
   }
 
   signInWithPassword(email: string, password: string): void {
@@ -51,7 +59,7 @@ export class AuthService {
         this.goToDashboard();
 
         // Add new document for user
-        this.afs.collection('users').doc(userRef.user?.uid).set({
+        this.userDocRef.set({
           uid: userRef.user?.uid,
           email: data.email,
           firstName: data.firstName,
@@ -62,7 +70,7 @@ export class AuthService {
             category: [],
             state: []
           }
-        }).then(refId => console.log('Successfully created new document for user: ', userRef.user?.uid))
+        }).then(() => console.log('Successfully created new document for user: ', userRef.user?.uid))
           .catch(console.log);
       })
       .catch(console.log);
@@ -79,5 +87,12 @@ export class AuthService {
         .then(() => console.log('User signed out.'))
         .catch(err => console.log('Error signing user out: ', err));
     });
+  }
+
+  createTransaction(data: Transaction) {
+    // @ts-ignore
+    this.userDocRef.update({
+      transactions: firebase.firestore.FieldValue.arrayUnion(data) as unknown as Transaction[]
+    })
   }
 }

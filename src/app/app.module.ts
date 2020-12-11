@@ -22,7 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialImportsModule } from './imports/material-imports.module';
 import { FireImportsModule } from './imports/fire-imports.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 
 
@@ -32,6 +32,7 @@ import { SetNotificationsComponent } from './dashboard/set-notifications/set-not
 import { AmountNotificationComponent } from './dashboard/notifications/amount-notification/amount-notification.component';
 import { CategoryNotificationComponent } from './dashboard/notifications/category-notification/category-notification.component';
 import { StateNotificationComponent } from './dashboard/notifications/state-notification/state-notification.component';
+import { AddTransactionDialogComponent } from './dashboard/transactions-view/add-transaction-dialog/add-transaction-dialog.component';
 
 
 
@@ -55,6 +56,7 @@ import { StateNotificationComponent } from './dashboard/notifications/state-noti
         AmountNotificationComponent,
         CategoryNotificationComponent,
         StateNotificationComponent,
+        AddTransactionDialogComponent,
     ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { StateNotificationComponent } from './dashboard/notifications/state-noti
     FireImportsModule,
     ReactiveFormsModule,
     ChartsModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
