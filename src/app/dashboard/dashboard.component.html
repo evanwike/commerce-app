@@ -1,6 +1,6 @@
 <div class="container">
   <div id="welcome">
-    <h2>Welcome back, {{userData.firstName}}.</h2>
+    <h2>Welcome back, {{(authService.userProfile$ | async)?.firstName}}.</h2>
   </div>
 
   <mat-card id="dashboard">
@@ -29,26 +29,8 @@
         <ng-template mat-tab-label>
           <mat-icon>notifications</mat-icon><span class="d-none d-md-block">Notifications</span>
         </ng-template>
-        <app-notifications-view>
-          <!-- Notifications View injected here -->
-        </app-notifications-view>
+        <app-notifications-view></app-notifications-view>
       </mat-tab>
     </mat-tab-group>
-
-<!--    <mat-toolbar color="primary" class="btn-group">-->
-<!--      <mat-toolbar-row>-->
-<!--        <div>-->
-<!--          <a mat-button routerLink="home">-->
-<!--            <mat-icon>account_balance</mat-icon>Dashboard-->
-<!--          </a>-->
-<!--          <a mat-button routerLink="transactions">-->
-<!--            <mat-icon>list</mat-icon>Transactions-->
-<!--          </a>-->
-<!--          <a mat-button routerLink="notifications">-->
-<!--            <mat-icon>notifications</mat-icon>Notifications-->
-<!--          </a>-->
-<!--        </div>-->
-<!--      </mat-toolbar-row>-->
-<!--    </mat-toolbar>-->
   </mat-card>
 </div>
