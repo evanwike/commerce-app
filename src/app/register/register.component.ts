@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth/auth.service';
-import {matchPassword} from '../password-validator.directive';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-
 export class RegisterComponent implements OnInit {
   registrationForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required,
-      Validators.minLength(8), Validators.pattern(/\d/),
-      Validators.pattern(/[A-Z]/), Validators.pattern(/[a-z]/),
-      Validators.pattern(/[`~!@#$%^&*()_+={}|:";'<>?,./\-\[\]\\]/)]),
+    password: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\\]).{8,32}$')
+      ]),
     confirmPassword: new FormControl('', [Validators.required])
-  }, {matchPassword});
+  });
 
   constructor(
     public authService: AuthService) { }
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(data: any) {
-    console.log('Register: ', data);
+    console.log('Register: ', data)
     this.authService.signUpWithEmailAndPassword(data);
   }
 }

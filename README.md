@@ -16,6 +16,9 @@
 * [Technical Architecture](docs/Technical_Architecture.pdf)
 * [Estimated Effort](docs/Iteration-4_Estimated_Effort.xlsx)
 * [Evaluation](docs/Iteration-4_Evaluation.pdf)
+### Iteration 5
+* [Estimated Effort](docs/Iteration-5_Estimated_Effort.xlsx)
+* [Evaluation](docs/Iteration-5_Evaluation.pdf)
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

@@ -5,34 +5,34 @@
   </div>
   <mat-card-content>
     <form [formGroup]="registrationForm" (ngSubmit)="register(registrationForm.value)">
-
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput
+               #email
                formControlName="email"
+               required
                autocomplete="email"
-               placeholder="doe.john@gmail.com"
-               required>
+               placeholder="doe.john@gmail.com">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>First Name</mat-label>
         <input matInput
                formControlName="firstName"
+               required
                type="text"
                autocomplete="given-name"
-               placeholder="John"
-               required>
+               placeholder="John">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Last Name</mat-label>
         <input matInput
                formControlName="lastName"
+               required
                type="text"
                autocomplete="family-name"
-               placeholder="Doe"
-               required>
+               placeholder="Doe">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -40,23 +40,25 @@
         <input matInput
                #password
                formControlName="password"
+               required
+               minlength="8"
                type="password"
-               autocomplete="new-password"
-               required>
+               autocomplete="new-password">
         <mat-hint align="end">{{password.value?.length || 0}}/8</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Confirm Password</mat-label>
         <input matInput
+               #confirm
                formControlName="confirmPassword"
+               required
                type="password"
-               autocomplete="new-password"
-               required>
+               autocomplete="new-password">
       </mat-form-field>
 
       <div>
-        <button class="btn" type="submit" [disabled]="!registrationForm.valid" mat-raised-button color="primary">SUBMIT</button>
+        <button class="btn" type="submit" mat-raised-button color="primary">SUBMIT</button>
       </div>
       <!--      <mat-error *ngIf="registrationForm.controls.email.invalid"></mat-error>-->
     </form>
