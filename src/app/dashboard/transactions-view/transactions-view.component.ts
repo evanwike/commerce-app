@@ -32,7 +32,7 @@ export class TransactionsViewComponent implements OnInit {
     }).afterClosed()
       .subscribe(data => {
         console.log('Received data:', data);
-        // TODO: Send to auth service.
+        this.authService.createTransaction(data as Transaction);
       })
   }
 

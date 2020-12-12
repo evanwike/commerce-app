@@ -90,6 +90,8 @@ export class AuthService {
   }
 
   createTransaction(data: Transaction) {
+    console.log(data)
+    console.log(typeof data)
     // @ts-ignore
     this.userDocRef.update({
       transactions: firebase.firestore.FieldValue.arrayUnion(data) as unknown as Transaction[]
