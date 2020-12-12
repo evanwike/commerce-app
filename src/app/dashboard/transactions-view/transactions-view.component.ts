@@ -33,7 +33,7 @@ export class TransactionsViewComponent implements OnInit {
       .subscribe(data => {
         console.log('Received data:', data);
         this.authService.createTransaction(data as Transaction);
-      })
+      });
   }
 
 }

@@ -11,9 +11,7 @@ export interface User {
 }
 
 export interface Transaction {
-  accountNum: string;
   amount: number;
-  balance: number;
   cr: string;
   description: string;
   date: Timestamp;

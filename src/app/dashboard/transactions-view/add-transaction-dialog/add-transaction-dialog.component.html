@@ -1,8 +1,7 @@
 <h2 mat-dialog-title>Add Transaction</h2>
 <mat-divider></mat-divider>
-<div>
-  <form [formGroup]="form" (ngSubmit)="save(form.value)">
 
+  <form [formGroup]="form" (ngSubmit)="save(form.value)">
     <div class="container">
     <mat-form-field class="date" appearance="standard">
       <mat-label>Date</mat-label>
@@ -21,9 +20,9 @@
     <div class="container">
     <mat-form-field appearance="standard">
       <mat-label>Type</mat-label>
-      <mat-select [formControl]="" required>
-        <mat-option value="credit">Credit</mat-option>
-        <mat-option value="debit">Debit</mat-option>
+      <mat-select formControlName="cr" required>
+        <mat-option value="Credit">Credit</mat-option>
+        <mat-option value="Debit">Debit</mat-option>
       </mat-select>
     </mat-form-field>
     </div>
@@ -34,9 +33,7 @@
       <input matInput required formControlName="description">
     </mat-form-field>
     </div>
-
   </form>
-</div>
 
 <div class="button-row">
   <button class="mat-raised-button"(click)="close()">Close</button>
