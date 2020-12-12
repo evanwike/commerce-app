@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -7,7 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./set-notifications.component.scss']
 })
 export class SetNotificationsComponent {
-
   oos: boolean;
   category: boolean;
   amount: boolean;
@@ -22,6 +22,26 @@ export class SetNotificationsComponent {
     'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
   ];
+
+  oosForm = new FormGroup({
+    date: new FormControl('', [Validators.required]),
+    state: new FormControl('', [Validators.required]),
+    note: new FormControl('', [Validators.required])
+  });
+
+  amountForm = new FormGroup({
+    date: new FormControl('', [Validators.required]),
+    amount: new FormControl(0, [Validators.required]),
+    note: new FormControl('', [Validators.required])
+  });
+
+  categoryForm = new FormGroup({
+    date: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required]),
+    note: new FormControl('', [Validators.required])
+  });
+
+
 
   onSelectionChange(value: string) {
     if (value === 'oos') {
@@ -39,5 +59,17 @@ export class SetNotificationsComponent {
       this.oos = false;
       this.category = false;
     }
+  }
+
+  createAmountNotification(data: FormData) {
+    console.log(data)
+  }
+
+  createStateNotification(data: FormData) {
+    console.log(data)
+  }
+
+  createCategoryNotification(data: FormData) {
+    console.log(data)
   }
 }
