@@ -50,7 +50,7 @@ export class AuthService {
         this.goToDashboard();
         console.log('User signed in with email and password.');
       })
-      .catch(console.log);
+      .catch(console.log)
   }
 
   async signUpWithEmailAndPassword(data): Promise<any> {
@@ -90,11 +90,11 @@ export class AuthService {
   }
 
   createTransaction(data: Transaction) {
-    console.log(data)
-    console.log(typeof data)
+    console.log(data);
+    console.log(typeof data);
     // @ts-ignore
     this.userDocRef.update({
       transactions: firebase.firestore.FieldValue.arrayUnion(data) as unknown as Transaction[]
-    })
+    });
   }
 }

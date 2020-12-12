@@ -10,7 +10,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 
 export class AddTransactionDialogComponent implements OnInit {
   form = new FormGroup({
-    accountNum: new FormControl('', [Validators.required]),
+    date: new FormControl('', [Validators.required]),
     amount: new FormControl('', [Validators.required]),
     cr: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required])

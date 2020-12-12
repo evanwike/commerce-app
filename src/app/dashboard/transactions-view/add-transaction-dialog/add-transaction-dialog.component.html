@@ -1,28 +1,39 @@
 <h2 mat-dialog-title>Add Transaction</h2>
 <mat-divider></mat-divider>
-<div>
-  <form [formGroup]="form" (ngSubmit)="save(form.value)">
-    <mat-form-field appearance="standard">
-      <mat-label>Account Number</mat-label>
-      <input matInput required formControlName="accountNum">
-    </mat-form-field>
 
+  <form [formGroup]="form" (ngSubmit)="save(form.value)">
+    <div class="container">
+    <mat-form-field class="date" appearance="standard">
+      <mat-label>Date</mat-label>
+      <input matInput placeholder="Ex. 12/12/2012"  required formControlName="date">
+    </mat-form-field>
+    </div>
+
+    <div class="container">
     <mat-form-field appearance="standard">
       <mat-label>Amount</mat-label>
+      <span matPrefix>$&nbsp;</span>
       <input matInput required formControlName="amount">
     </mat-form-field>
+    </div>
 
+    <div class="container">
+    <mat-form-field appearance="standard">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="cr" required>
+        <mat-option value="Credit">Credit</mat-option>
+        <mat-option value="Debit">Debit</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+
+    <div class="container">
     <mat-form-field appearance="standard">
       <mat-label>Description</mat-label>
       <input matInput required formControlName="description">
     </mat-form-field>
-
-    <mat-button-toggle-group formControlName="cr">
-      <mat-button-toggle value="DR">Debit</mat-button-toggle>
-      <mat-button-toggle value="CR">Credit</mat-button-toggle>
-    </mat-button-toggle-group>
+    </div>
   </form>
-</div>
 
 <div class="button-row">
   <button class="mat-raised-button"(click)="close()">Close</button>
