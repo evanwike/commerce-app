@@ -1,7 +1,9 @@
 <div class="wrap">
   <div class="row">
     <div class="col-sm-6" style="margin-top: 3%; margin-left: auto; margin-right: auto; border-radius: 5px; box-shadow: 2px 2px 2px 2px lightgrey;">
-      <h2>Welcome back, {{(authService.userProfile$ | async)?.firstName}}.</h2>
+      <h2>Welcome back, {{(userProfile$ | async)?.firstName}}.</h2>
+      <p><span style="font-weight: bold">Balance:</span> ${{balance$ | async}}</p>
+      <p>{{getDate()}}</p>
     </div>
     <div class="col-sm-6" style="margin-top: 3%; margin-left: auto; margin-right: auto; border-radius: 5px; box-shadow: 2px 2px 2px 2px lightgrey;">
       <app-notifications></app-notifications>

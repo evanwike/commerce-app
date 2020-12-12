@@ -4,6 +4,8 @@ import {AuthService} from '../../auth/auth.service';
 import {Transaction} from '../../auth/user.model';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {AddTransactionDialogComponent} from './add-transaction-dialog/add-transaction-dialog.component';
+import firebase from 'firebase';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-transactions-view',
@@ -32,9 +34,24 @@ export class TransactionsViewComponent implements OnInit {
       autoFocus: true
     }).afterClosed()
       .subscribe(data => {
-        console.log('Received data:', data);
-        this.authService.createTransaction(data as Transaction);
+        const _amount = Math.abs(data['amount']);
+        const _cr = data['cr'];
+
+        this.authService.createTransaction({
+          amount: _cr == 'CR' ? _amount : -_amount,
+          cr: _cr,
+          date: data['date'],
+          description: data['description']
+        });
       });
   }
 
+  getAmountString(amount: number, type: String) {
+    amount = Math.abs(amount);
+    return type == 'Debit' ? `-$${amount}` : `$${amount}`;
+  }
+
+  getDateString(date: Timestamp) {
+    return date.toDate().toDateString();
+  }
 }

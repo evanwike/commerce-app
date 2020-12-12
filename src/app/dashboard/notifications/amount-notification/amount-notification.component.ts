@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AmountNotification} from '../../../auth/user.model';
 import firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-amount-notification',
@@ -16,7 +17,7 @@ export class AmountNotificationComponent implements OnInit {
     console.log(this.data);
   }
 
-  getDate(date: firebase.firestore.Timestamp) {
+  getDate(date: Timestamp) {
     return date.toDate().toDateString();
   }
 }

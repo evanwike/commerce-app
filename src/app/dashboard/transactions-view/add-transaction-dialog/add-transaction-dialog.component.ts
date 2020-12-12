@@ -10,8 +10,8 @@ import {MatDialogRef} from '@angular/material/dialog';
 
 export class AddTransactionDialogComponent implements OnInit {
   form = new FormGroup({
-    date: new FormControl('', [Validators.required]),
-    amount: new FormControl('', [Validators.required]),
+    date: new FormControl(new Date(), [Validators.required]),
+    amount: new FormControl(0, [Validators.required]),
     cr: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required])
   });
@@ -23,7 +23,7 @@ export class AddTransactionDialogComponent implements OnInit {
 
   // Close dialog, send email as result
   save(value: FormData) {
-    this.dialogRef.close(value);  // TODO: Change to Transaction first then send
+    this.dialogRef.close(value);
   }
 
   // Close Dialog

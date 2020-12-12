@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CategoryNotification} from '../../../auth/user.model';
 import firebase from 'firebase';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-category-notification',
@@ -15,7 +16,7 @@ export class CategoryNotificationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getDate(date: firebase.firestore.Timestamp) {
+  getDate(date: Timestamp) {
     return date.toDate().toDateString();
   }
 }

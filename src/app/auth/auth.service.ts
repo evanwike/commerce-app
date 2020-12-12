@@ -15,6 +15,7 @@ export class AuthService {
   readonly auth$: Observable<firebase.User>;
   readonly userProfile$: Observable<User>;
   readonly transactions$: Observable<Transaction[]>;
+  readonly balance$: Observable<Number>;
   readonly notifications$: Observable<Notifications>;
   readonly amountNotifications$: Observable<AmountNotification[]>;
   readonly categoryNotifications$: Observable<CategoryNotification[]>;
@@ -28,6 +29,8 @@ export class AuthService {
     this.userProfile$ = this.afAuth.authState.pipe(
       switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(undefined)));
     this.transactions$ = this.userProfile$.pipe(map(user => user.transactions));
+    this.balance$ = this.transactions$.pipe(
+      map(arr => arr.map(transaction => transaction.amount).reduce((a, b) => a + b)));
     this.notifications$ = this.userProfile$.pipe(map(user => user.notifications));
     this.amountNotifications$ = this.notifications$.pipe(map(notificationObj => notificationObj.amount));
     this.categoryNotifications$ = this.notifications$.pipe(map(notificationObj => notificationObj.category));

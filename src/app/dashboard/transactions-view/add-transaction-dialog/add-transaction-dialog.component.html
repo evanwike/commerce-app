@@ -3,17 +3,19 @@
 
   <form [formGroup]="form" (ngSubmit)="save(form.value)">
     <div class="container">
-    <mat-form-field class="date" appearance="standard">
-      <mat-label>Date</mat-label>
-      <input matInput placeholder="Ex. 12/12/2012"  required formControlName="date">
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
     </div>
 
     <div class="container">
     <mat-form-field appearance="standard">
       <mat-label>Amount</mat-label>
       <span matPrefix>$&nbsp;</span>
-      <input matInput required formControlName="amount">
+      <input matInput required formControlName="amount" type="number">
     </mat-form-field>
     </div>
 
@@ -21,8 +23,8 @@
     <mat-form-field appearance="standard">
       <mat-label>Type</mat-label>
       <mat-select formControlName="cr" required>
-        <mat-option value="Credit">Credit</mat-option>
-        <mat-option value="Debit">Debit</mat-option>
+        <mat-option value="CR">Credit</mat-option>
+        <mat-option value="DR">Debit</mat-option>
       </mat-select>
     </mat-form-field>
     </div>
