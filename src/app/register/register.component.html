@@ -47,16 +47,17 @@
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-hint align="end">{{password.value?.length || 0}}/8</mat-hint>
+        <mat-error *ngIf="registrationForm.controls.password.invalid">{{getPasswordErrorMsg()}}</mat-error>
       </mat-form-field>
-      <div *ngIf="registrationForm.get('password').touched && !registrationForm.valid">
-        <p class="check">Must contain at least 1 of each:</p>
-        <p class="check">Lowercase letter, uppercare letter, number, special character</p>
-      </div>
+      <div style="height: 15px"></div>
+<!--      <div *ngIf="registrationForm.get('password').touched && !registrationForm.valid">-->
+<!--        <p class="check">Must contain at least 1 of each:</p>-->
+<!--        <p class="check">Lowercase letter, uppercase letter, number, special character</p>-->
+<!--      </div>-->
 
       <div>
         <button class="btn" type="submit" [disabled]="!registrationForm.valid" mat-raised-button color="primary">SUBMIT</button>
       </div>
-      <!--      <mat-error *ngIf="registrationForm.controls.email.invalid"></mat-error>-->
     </form>
   </mat-card-content>
   Already have an account? <a routerLink="/login" routerLinkActive="active"> Sign in </a>

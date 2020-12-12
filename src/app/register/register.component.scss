@@ -15,8 +15,13 @@ mat-form-field {
 .btn {
   width: 100%;
 }
+
 .check {
   font-size: 12px;
   text-align: left;
   color: gray;
+}
+
+mat-error {
+  display: block;
 }

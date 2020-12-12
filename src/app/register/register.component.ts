@@ -27,7 +27,23 @@ export class RegisterComponent implements OnInit {
   }
 
   register(data: any) {
+    if (this.registrationForm.errors) {
+      window.alert('Password must be at least 8 characters, containing at least 1 uppercase letter, 1 symbol, and 1 number.');
+      return;
+    }
+
     console.log('Register: ', data);
-    this.authService.signUpWithEmailAndPassword(data);
+    this.authService.signUpWithEmailAndPassword(data)
+      .catch(err => {
+        window.alert(err.message);
+      })
+  }
+
+  getPasswordErrorMsg() {
+    if (this.registrationForm.controls.password.errors.minLength || this.registrationForm.controls.password.errors.pattern) {
+      return 'Password must be at least 8 characters, containing at least 1 uppercase letter, 1 symbol, and 1 number.'
+    } else if (this.registrationForm.controls.password.errors.required) {
+      return 'Password is required.'
+    }
   }
 }

@@ -54,7 +54,7 @@ export class AuthService {
   }
 
   async signUpWithEmailAndPassword(data): Promise<any> {
-    this.afAuth.createUserWithEmailAndPassword(data.email, data.password)
+    return this.afAuth.createUserWithEmailAndPassword(data.email, data.password)
       .then(userRef => {
         this.goToDashboard();
 
@@ -73,7 +73,9 @@ export class AuthService {
         }).then(() => console.log('Successfully created new document for user: ', userRef.user?.uid))
           .catch(console.log);
       })
-      .catch(console.log);
+      .catch(err => {
+        window.alert(err);
+      });
   }
 
   goToDashboard(): void {

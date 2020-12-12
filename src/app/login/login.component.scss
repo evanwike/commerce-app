@@ -39,3 +39,13 @@ mat-form-field {
     }
   }
 }
+
+mat-form-field .mat-form-field {
+  &-underline {
+    position: relative;
+    bottom: auto;
+  }
+  &-subscript-wrapper {
+    position: static;
+  }
+}
