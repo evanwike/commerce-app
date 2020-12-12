@@ -78,3 +78,7 @@ export class ExportTransactionSheetComponent implements OnInit {
     event.preventDefault();
   }
 }*/
+
+// Added to remove error, can be removed later.
+export class TransactionsComponent {
+}
