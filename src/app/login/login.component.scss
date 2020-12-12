@@ -16,11 +16,6 @@ mat-form-field {
   }
 }
 
-// Removes padding under mat-form-field
-::ng-deep .mat-form-field-wrapper{
-  margin-bottom: -1em;
-}
-
 .actions {
   button {
     width: 100%;

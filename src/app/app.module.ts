@@ -35,6 +35,7 @@ import { StateNotificationComponent } from './dashboard/notifications/state-noti
 import { AddTransactionDialogComponent } from './dashboard/transactions-view/add-transaction-dialog/add-transaction-dialog.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { RegisterDialogComponent } from './login/register-dialog/register-dialog.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { MatNativeDateModule } from '@angular/material/core';
         CategoryNotificationComponent,
         StateNotificationComponent,
         AddTransactionDialogComponent,
+        RegisterDialogComponent,
     ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {AuthService} from '../auth/auth.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ResetDialogComponent} from './reset-dialog/reset-dialog.component';
 import {Router} from '@angular/router';
+import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +17,6 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
   });
-
-  validationMessages = {
-    email: {
-      required: 'Please enter your email.'
-    },
-    password: {
-      required: 'Please enter your password.'
-    }
-  };
 
   constructor(
     public authService: AuthService,
@@ -41,31 +33,34 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  getErrorMessage(control: string) {
-    const errors = this.loginForm.controls[control].errors;
-    console.log(errors)
-    console.log(errors.keys)
-    return this.validationMessages[control][errors.keys];
-  }
-
   openResetDialog() {
-    const dialogConfig = new MatDialogConfig();
-
     this.dialog.open(ResetDialogComponent, {
-      disableClose: true,
       autoFocus: true,
       width: '400px',
       data: {
         title: 'Reset Password',
         email: this.loginForm.controls.email.value
       }
-    })
-      .afterClosed()
+    }).afterClosed()
       .subscribe(data => {
         console.log("Dialog output: ", data)
         // TODO: Send password reset email w/ data
         // TODO: Open dialog to show email has been sent
       });
+  }
+
+  openRegisterDialog() {
+    this.dialog.open(RegisterDialogComponent, {
+      autoFocus: true,
+      width: '400px',
+      data: {
+        email: this.loginForm.controls.email.value
+      }
+    }).afterClosed()
+      .subscribe(data => {
+        this.authService.signUpWithEmailAndPassword(data)
+          .catch(console.log);
+      })
   }
 
   login(data: any) {

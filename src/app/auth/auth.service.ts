@@ -73,9 +73,6 @@ export class AuthService {
         }).then(() => console.log('Successfully created new document for user: ', userRef.user?.uid))
           .catch(console.log);
       })
-      .catch(err => {
-        window.alert(err);
-      });
   }
 
   goToDashboard(): void {

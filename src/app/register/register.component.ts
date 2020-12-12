@@ -10,7 +10,7 @@ import {AuthService} from '../auth/auth.service';
 
 export class RegisterComponent implements OnInit {
   hide = true;
-  registrationForm = new FormGroup({
+  form = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(data: any) {
-    if (this.registrationForm.errors) {
+    if (this.form.errors) {
       window.alert('Password must be at least 8 characters, containing at least 1 uppercase letter, 1 symbol, and 1 number.');
       return;
     }
@@ -37,13 +37,5 @@ export class RegisterComponent implements OnInit {
       .catch(err => {
         window.alert(err.message);
       })
-  }
-
-  getPasswordErrorMsg() {
-    if (this.registrationForm.controls.password.errors.minLength || this.registrationForm.controls.password.errors.pattern) {
-      return 'Password must be at least 8 characters, containing at least 1 uppercase letter, 1 symbol, and 1 number.'
-    } else if (this.registrationForm.controls.password.errors.required) {
-      return 'Password is required.'
-    }
   }
 }
