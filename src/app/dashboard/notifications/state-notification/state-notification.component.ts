@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {StateNotification} from '../../../auth/user.model';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-state-notification',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./state-notification.component.scss']
 })
 export class StateNotificationComponent implements OnInit {
+  @Input() data: StateNotification;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getDate(date: firebase.firestore.Timestamp) {
+    return date.toDate().toDateString();
+  }
 }

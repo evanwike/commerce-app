@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CategoryNotification} from '../../../auth/user.model';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-category-notification',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-notification.component.scss']
 })
 export class CategoryNotificationComponent implements OnInit {
+  @Input() data: CategoryNotification;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getDate(date: firebase.firestore.Timestamp) {
+    return date.toDate().toDateString();
+  }
 }

@@ -33,7 +33,8 @@ import { AmountNotificationComponent } from './dashboard/notifications/amount-no
 import { CategoryNotificationComponent } from './dashboard/notifications/category-notification/category-notification.component';
 import { StateNotificationComponent } from './dashboard/notifications/state-notification/state-notification.component';
 import { AddTransactionDialogComponent } from './dashboard/transactions-view/add-transaction-dialog/add-transaction-dialog.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -67,7 +68,9 @@ import { AddTransactionDialogComponent } from './dashboard/transactions-view/add
     ReactiveFormsModule,
     ChartsModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

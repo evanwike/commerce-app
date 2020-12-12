@@ -90,11 +90,28 @@ export class AuthService {
   }
 
   createTransaction(data: Transaction) {
-    console.log(data);
-    console.log(typeof data);
-    // @ts-ignore
+    console.log('Creating new transaction: ', data);
+
     this.userDocRef.update({
       transactions: firebase.firestore.FieldValue.arrayUnion(data) as unknown as Transaction[]
     });
+  }
+
+  createAmountNotification(data: AmountNotification) {
+    console.log('Creating amount notification: ', data);
+    // @ts-ignore
+    this.userDocRef.update({'notifications.amount': firebase.firestore.FieldValue.arrayUnion(data)})
+  }
+
+  createStateNotification(data: StateNotification) {
+    console.log('Creating state notification: ', data);
+    // @ts-ignore
+    this.userDocRef.update({'notifications.state': firebase.firestore.FieldValue.arrayUnion(data)})
+  }
+
+  createCategoryNotification(data: CategoryNotification) {
+    console.log('Creating category notification: ', data);
+    // @ts-ignore
+    this.userDocRef.update({'notifications.category': firebase.firestore.FieldValue.arrayUnion(data)})
   }
 }

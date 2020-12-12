@@ -1,0 +1,25 @@
+div.notification {
+  display: grid;
+  grid-template-columns: 150px 1fr 1fr 1fr;
+  height: 50px;
+  padding-right: 15px;
+  border: 1px solid #FFB300;
+  margin-bottom: 1em;
+
+  div {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+
+    div {
+      width: 75px;
+    }
+  }
+}
+
+.notif-type {
+  background: #FFB300;
+  text-align: center;
+  margin-right: 15px;
+}

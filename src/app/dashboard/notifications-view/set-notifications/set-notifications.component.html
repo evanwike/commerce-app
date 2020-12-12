@@ -13,9 +13,11 @@
 
     <div *ngIf="oos" style="display:inline;">
       <form [formGroup]="oosForm">
-        <mat-form-field class="date" appearance="fill">
+        <mat-form-field appearance="fill">
           <mat-label>Date</mat-label>
-          <input type="date" matInput formControlName="date">
+          <input matInput [matDatepicker]="picker1" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="type">
@@ -37,17 +39,19 @@
 
     <div *ngIf="category" style="display: inline;">
       <form [formGroup]="categoryForm">
-        <mat-form-field class="date" appearance="fill">
+        <mat-form-field appearance="fill">
           <mat-label>Date</mat-label>
-          <input type="date" matInput formControlName="date">
+          <input matInput [matDatepicker]="picker2" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="type">
           <mat-label>Category</mat-label>
           <mat-select formControlName="category">
-            <mat-option>Groceries</mat-option>
-            <mat-option>Utilities</mat-option>
-            <mat-option>Payroll</mat-option>
+            <mat-option value="Groceries">Groceries</mat-option>
+            <mat-option value="Utilities">Utilities</mat-option>
+            <mat-option value="Payroll">Payroll</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -63,9 +67,11 @@
 
     <div *ngIf="amount" style="display: inline;">
       <form [formGroup]="amountForm">
-        <mat-form-field class="date" appearance="fill">
+        <mat-form-field appearance="fill">
           <mat-label>Date</mat-label>
-          <input type="date" matInput formControlName="date">
+          <input matInput [matDatepicker]="picker3" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="type">

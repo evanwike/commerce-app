@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../../auth/auth.service';
+import firebase from 'firebase';
+import firestore = firebase.firestore;
 
 
 @Component({
@@ -24,24 +27,24 @@ export class SetNotificationsComponent {
   ];
 
   oosForm = new FormGroup({
-    date: new FormControl('', [Validators.required]),
+    date: new FormControl(new Date(), [Validators.required]),
     state: new FormControl('', [Validators.required]),
     note: new FormControl('', [Validators.required])
   });
 
   amountForm = new FormGroup({
-    date: new FormControl('', [Validators.required]),
+    date: new FormControl(new Date(), [Validators.required]),
     amount: new FormControl(0, [Validators.required]),
     note: new FormControl('', [Validators.required])
   });
 
   categoryForm = new FormGroup({
-    date: new FormControl('', [Validators.required]),
+    date: new FormControl(new Date(), [Validators.required]),
     category: new FormControl('', [Validators.required]),
     note: new FormControl('', [Validators.required])
   });
 
-
+  constructor(private authService: AuthService) { }
 
   onSelectionChange(value: string) {
     if (value === 'oos') {
@@ -62,14 +65,26 @@ export class SetNotificationsComponent {
   }
 
   createAmountNotification(data: FormData) {
-    console.log(data)
+    this.authService.createAmountNotification({
+      amount: data['amount'],
+      date: firestore.Timestamp.fromDate(data['date']),
+      note: data['note']
+    })
   }
 
   createStateNotification(data: FormData) {
-    console.log(data)
+    this.authService.createStateNotification({
+      state: data['state'],
+      date: firestore.Timestamp.fromDate(data['date']),
+      note: data['note']
+    })
   }
 
   createCategoryNotification(data: FormData) {
-    console.log(data)
+    this.authService.createCategoryNotification({
+      category: data['category'],
+      date: firestore.Timestamp.fromDate(data['date']),
+      note: data['note']
+    })
   }
 }

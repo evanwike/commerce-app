@@ -12,6 +12,7 @@ import {AddTransactionDialogComponent} from './add-transaction-dialog/add-transa
 })
 export class TransactionsViewComponent implements OnInit {
   transactions$: Observable<Transaction[]>;
+  columns = ['date', 'description', 'cr', 'amount']
   searchText: string;
 
   constructor(private authService: AuthService, private dialog: MatDialog) {
