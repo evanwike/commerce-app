@@ -1,5 +1,5 @@
-<div class="d-flex flex-row align-items-center justify-content-between" role="group" aria-label="Basic example">
-  <mat-form-field appearance="standard" class="align-middle">
+<div class="d-flex flex-row align-items-center justify-content-end" role="group" aria-label="Basic example">
+<!--  <mat-form-field appearance="standard" class="align-middle">
     <mat-label><mat-icon>search</mat-icon>Search</mat-label>
     <input matInput #search [(ngModel)]="searchText">
     <button mat-icon-button
@@ -9,11 +9,14 @@
             *ngIf="!searchText">
       <mat-icon>close</mat-icon>
     </button>
-  </mat-form-field>
+  </mat-form-field>-->
+  <div style="width: 75%; margin: auto; padding: 10px; text-align: right;">
   <button mat-mini-fab color="primary"
-          aria-label="Create new transaction." class="align-middle" (click)="openAddTransactionDialog()">
+          aria-label="Create new transaction." (click)="openAddTransactionDialog()">
     <mat-icon>add</mat-icon>
   </button>
+  </div>
+
 </div>
 
 <div class="transactions">
